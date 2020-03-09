@@ -39,11 +39,11 @@ public class GameStateManager {
             // switch to level select
         }
         if(state == SIDESCROLL) {
-            gameState = new SideScrollState(this);
+            gameState = new SideScrollState(this, "RooftopTest.tmx");
         }
         if(state == BOSSFIGHT) {
             // switch to bossfight
-            gameState = new BossFightState(this);
+            gameState = new BossFightState(this, "RooftopTest.tmx");
         }
     }
 

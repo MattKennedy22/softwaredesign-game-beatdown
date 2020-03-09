@@ -2,12 +2,14 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.juniordesign.beatdown.entities.Dewey;
 import com.juniordesign.beatdown.managers.GameStateManager;
 
 public class BossFightState extends GameState {
 
     private Dewey player;
+
     public BossFightState(GameStateManager gsm, String mapName){
         super(gsm, mapName);
     }

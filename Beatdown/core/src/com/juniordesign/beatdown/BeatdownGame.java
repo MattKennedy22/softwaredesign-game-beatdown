@@ -25,7 +25,6 @@ public class BeatdownGame extends ApplicationAdapter {
 	private GameStateManager gsm;
 
 
-
 	// Getters
 	public SpriteBatch getBatch(){
 		return this.batch;
@@ -38,6 +37,7 @@ public class BeatdownGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 
+		//Set up cameras
 		camera = new OrthographicCamera(v_width, v_height);
 		camera.setToOrtho(false, v_width, v_height);
 		camera.update();

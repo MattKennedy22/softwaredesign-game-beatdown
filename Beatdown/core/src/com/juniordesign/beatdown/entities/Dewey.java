@@ -11,12 +11,15 @@ public class Dewey {
     Rectangle bottom, left, right, top;
     private Sprite sprite;
     private Texture texture;
+    private int health;
 
     // Constructor
     public Dewey() {
         texture = new Texture("GuitarDewey.png");
         sprite = new Sprite(texture, 0, 0, 32, 32);
         this.setPosition(0,0);
+
+        health = 5;
 
     }
 
