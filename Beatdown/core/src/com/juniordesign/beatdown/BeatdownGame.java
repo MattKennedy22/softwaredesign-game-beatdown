@@ -24,11 +24,7 @@ public class BeatdownGame extends ApplicationAdapter {
 
 	private GameStateManager gsm;
 
-	private TiledMap tiledMap;
-	private TiledMapRenderer tiledMapRenderer;
 
-
-	//private Dewey player;
 
 	// Getters
 	public SpriteBatch getBatch(){
@@ -48,11 +44,6 @@ public class BeatdownGame extends ApplicationAdapter {
 
 		gsm = new GameStateManager(this);
 
-		tiledMap = new TmxMapLoader().load("test1.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-
-		//player = new Dewey();
-		//player.setPosition(64, 32);
 	}
 
 	@Override
@@ -60,24 +51,16 @@ public class BeatdownGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		tiledMapRenderer.setView(camera);
-		tiledMapRenderer.render();
 		// Updates the game while taking into account when the last time render was called
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.draw();
 
-		//batch.setProjectionMatrix(camera.combined);
-		//batch.begin();
-		//player.draw(batch);
-		//batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
 		gsm.dispose();
-		tiledMap.dispose();
-		//player.dispose();
 	}
 
 }
