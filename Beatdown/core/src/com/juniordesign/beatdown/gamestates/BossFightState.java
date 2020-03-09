@@ -8,8 +8,8 @@ import com.juniordesign.beatdown.managers.GameStateManager;
 public class BossFightState extends GameState {
 
     private Dewey player;
-    public BossFightState(GameStateManager gsm){
-        super(gsm);
+    public BossFightState(GameStateManager gsm, String mapName){
+        super(gsm, mapName);
     }
 
     public void init(){
@@ -18,9 +18,14 @@ public class BossFightState extends GameState {
     }
     public void update(float deltatime){
         //CHANGE THIS
+        camera.update();
         handleInput();
     }
     public void draw(){
+        //tiledMapRenderer.setView(camera);
+        //tiledMapRenderer.render();
+        mapManager.render(camera);
+
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         player.draw(batch);
@@ -39,6 +44,8 @@ public class BossFightState extends GameState {
         }
     }
     public void dispose(){
-
+        player.dispose();
+        mapManager.dispose();
+        //tiledMap.dispose();
     }
 }

@@ -2,8 +2,13 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.juniordesign.beatdown.BeatdownGame;
 import com.juniordesign.beatdown.managers.GameStateManager;
+import com.juniordesign.beatdown.managers.MapManager;
 
 public abstract class GameState {
 
@@ -13,11 +18,18 @@ public abstract class GameState {
     protected SpriteBatch batch;
     protected OrthographicCamera camera;
 
-    protected GameState(GameStateManager gsm){
+    //protected TiledMap tiledMap;
+    //protected TiledMapRenderer tiledMapRenderer;
+    protected MapManager mapManager;
+
+    protected GameState(GameStateManager gsm, String mapName){
         this.gsm = gsm;
         game = gsm.getGame();
         batch = game.getBatch();
         camera = game.getCamera();
+        mapManager = new MapManager(mapName);
+        //tiledMap = new TmxMapLoader().load(map);
+        //tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         init();
     }
 
