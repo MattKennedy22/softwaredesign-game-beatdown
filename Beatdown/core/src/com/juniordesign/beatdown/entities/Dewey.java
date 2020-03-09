@@ -32,8 +32,9 @@ public class Dewey {
         sprite.translateX(-32);
     }
 
-    public void run() {
-        sprite.translateX(4);
+    public void run(float deltatime) {
+        // Move player 192 pixels per second
+        sprite.translateX(192*deltatime);
     }
 
     public void attack() {
