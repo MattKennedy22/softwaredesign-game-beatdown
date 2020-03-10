@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -15,8 +16,8 @@ import com.juniordesign.beatdown.managers.GameStateManager;
 public class BeatdownGame extends ApplicationAdapter {
 
 	public static final String title = "Beatdown";
-	public static final int v_width = 256;
-	public static final int v_height = 144;
+	public static final int v_width = 256; //256
+	public static final int v_height = 144;//144
 	public static final int scale = 4;
 
 	private SpriteBatch batch;
@@ -36,6 +37,7 @@ public class BeatdownGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		//background = new Texture("NesoFhH.png");
 
 		//Set up cameras
 		camera = new OrthographicCamera(v_width, v_height);
@@ -52,9 +54,9 @@ public class BeatdownGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		// Updates the game while taking into account when the last time render was called
+
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.draw();
-
 	}
 	
 	@Override

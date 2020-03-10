@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.juniordesign.beatdown.BeatdownGame;
 import com.juniordesign.beatdown.gamestates.BossFightState;
 import com.juniordesign.beatdown.gamestates.GameState;
+import com.juniordesign.beatdown.gamestates.MenuState;
 import com.juniordesign.beatdown.gamestates.SideScrollState;
 
 public class GameStateManager {
@@ -21,7 +22,7 @@ public class GameStateManager {
     public GameStateManager(BeatdownGame game){
         this.game = game;
         // side scroll for test , should start at menu in final product
-        setGameState(BOSSFIGHT);
+        setGameState(MENU);
     }
 
     public BeatdownGame getGame() {
@@ -33,7 +34,7 @@ public class GameStateManager {
             gameState.dispose();
         }
         if(state == MENU) {
-            // switch to menu
+            gameState = new MenuState(this);
         }
         if(state == LEVELSELECT) {
             // switch to level select
