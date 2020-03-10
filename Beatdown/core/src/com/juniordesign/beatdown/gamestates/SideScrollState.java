@@ -6,13 +6,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.juniordesign.beatdown.entities.Dewey;
 import com.juniordesign.beatdown.managers.CollisionManager;
 import com.juniordesign.beatdown.managers.GameStateManager;
+import com.juniordesign.beatdown.managers.MapManager;
 
 public class SideScrollState extends GameState {
 
     private Dewey player;
 
     public SideScrollState (GameStateManager gsm, String mapName){
-        super(gsm, mapName);
+        super(gsm);
+        mapManager = new MapManager(mapName);
     }
 
     public void init(){
