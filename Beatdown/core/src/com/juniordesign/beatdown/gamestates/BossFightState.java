@@ -17,6 +17,8 @@ public class BossFightState extends GameState {
     public void init(){
         player = new Dewey();
         player.setPosition(64,32);
+        camera.setToOrtho(false, 256, 144);
+        camera.update();
     }
     public void update(float deltatime){
         //CHANGE THIS

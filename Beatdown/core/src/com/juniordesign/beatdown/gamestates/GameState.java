@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.juniordesign.beatdown.BeatdownGame;
+import com.juniordesign.beatdown.managers.CollisionManager;
 import com.juniordesign.beatdown.managers.GameStateManager;
 import com.juniordesign.beatdown.managers.MapManager;
 
@@ -21,6 +22,7 @@ public abstract class GameState {
     //protected TiledMap tiledMap;
     //protected TiledMapRenderer tiledMapRenderer;
     protected MapManager mapManager;
+    protected CollisionManager collisionManager;
 
     protected GameState(GameStateManager gsm, String mapName){
         this.gsm = gsm;

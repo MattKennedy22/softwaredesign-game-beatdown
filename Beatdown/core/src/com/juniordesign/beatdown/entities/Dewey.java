@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Dewey {
-    Rectangle bottom, left, right, top;
+    private Rectangle frontHitbox;
     private Sprite sprite;
     private Texture texture;
     private int health;
@@ -17,15 +17,26 @@ public class Dewey {
     public Dewey() {
         texture = new Texture("GuitarDewey.png");
         sprite = new Sprite(texture, 0, 0, 32, 32);
+        frontHitbox = new Rectangle(0, 0, 32, 32);
         this.setPosition(0,0);
 
         health = 5;
 
     }
 
+    public Rectangle getFrontHitbox(){
+        return frontHitbox;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
+        frontHitbox.setPosition(x+32, y);
     }
+
 
     public void moveRight() {
         sprite.translateX(32);
@@ -38,10 +49,15 @@ public class Dewey {
     public void run(float deltatime) {
         // Move player 192 pixels per second
         sprite.translateX(192*deltatime);
+        frontHitbox.setPosition(sprite.getX()+32f,sprite.getY());
     }
 
     public void attack() {
 
+    }
+
+    public void gotHit(){
+        health--;
     }
     public void draw(SpriteBatch batch) {
         sprite.draw(batch);

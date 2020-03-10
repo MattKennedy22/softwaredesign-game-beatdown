@@ -1,6 +1,7 @@
 package com.juniordesign.beatdown.managers;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -14,6 +15,7 @@ public class MapManager {
     private TiledMap tiledMap;
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private TiledMapTileLayer obstacleLayer;
+    private MapLayer collideLayer;
     private int[] decorationLayersIndices;
 
     public MapManager(String mapName){
@@ -21,11 +23,16 @@ public class MapManager {
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         MapLayers mapLayers = tiledMap.getLayers();
         obstacleLayer = (TiledMapTileLayer) mapLayers.get("Obstacles");
+        collideLayer = mapLayers.get("ObstacleObjects");
 
         decorationLayersIndices = new int[] {
                 mapLayers.getIndex("Background"),
                 mapLayers.getIndex("Floor")
         };
+    }
+
+    public MapLayer getCollideLayer(){
+        return collideLayer;
     }
 
     public void render(OrthographicCamera camera){
