@@ -7,22 +7,37 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.ArrayList;
+
 public class Dewey {
     private Rectangle frontHitbox;
     private Rectangle normalHitbox;
     private Sprite sprite;
     private Texture texture;
+    private TextureRegion idleTexture,attackTexture;
     private int health;
+    private int runSpeed;
+    private float animationTimeEnd;
+    private float animationTime;
+    private enum State {JUMPING,FALLING,DUCKING,ATTACKING,RUNNING}
+    private State currentState;
 
     // Constructor
     public Dewey() {
         texture = new Texture("GuitarDewey.png");
-        sprite = new Sprite(texture, 0, 0, 32, 32);
-        normalHitbox = new Rectangle(0,0, 16, 16);
+        idleTexture = new TextureRegion(texture,0,0,32,32);
+        attackTexture = new TextureRegion(texture,96,0,32,32);
+
+        sprite = new Sprite(idleTexture, 0, 0, 32, 32);
+        normalHitbox = new Rectangle(0,0, 32, 16);
         frontHitbox = new Rectangle(0, 0, 32, 32);
         this.setPosition(0,0);
 
+        runSpeed = 192; //pixels per second
         health = 5;
+        currentState = State.RUNNING;
+        animationTimeEnd = 64f / runSpeed;
+        animationTime = 0;
 
     }
 
@@ -34,37 +49,116 @@ public class Dewey {
         return normalHitbox;
     }
 
+    public int getRunSpeed(){
+        return runSpeed;
+    }
+
     public int getHealth() {
         return health;
+    }
+
+    public float getAnimationTime(){
+        return animationTime;
     }
 
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
         frontHitbox.setPosition(x+32, y);
+        normalHitbox.setPosition(x,y+8);
     }
 
 
     public void moveRight() {
-        sprite.translateX(32);
+        if(sprite.getX() != 128) {
+            sprite.translateX(32);
+        }
     }
 
     public void moveLeft() {
-        sprite.translateX(-32);
+        if(sprite.getX() != 0) {
+            sprite.translateX(-32);
+        }
     }
 
     public void run(float deltatime) {
         // Move player 192 pixels per second
-        sprite.translateX(192*deltatime);
+        sprite.translateX(runSpeed*deltatime);
         frontHitbox.setPosition(sprite.getX()+32f,sprite.getY());
-        normalHitbox.setPosition(sprite.getX()+8f,sprite.getY()+8f);
+        normalHitbox.setPosition(sprite.getX(),sprite.getY()+8f);
     }
 
-    public void attack() {
-
+    public void attack(ArrayList<Enemy> enemies) {
+        if(currentState == State.RUNNING){
+            currentState = State.ATTACKING;
+            for(int i = 0; i < enemies.size(); i++){
+                Enemy enemy = enemies.get(i);
+                if(enemy.getSprite().getBoundingRectangle().overlaps(frontHitbox)){
+                    enemy.dispose();
+                    enemies.remove(i);
+                }
+            }
+        }
     }
 
     public void jump() {
+        //do jump animation
+        if(currentState == State.RUNNING){
+            currentState = State.JUMPING;
+        }
 
+    }
+
+    public void duck(){
+        //do duck animation
+        if(currentState == State.RUNNING){
+            currentState = State.DUCKING;
+        }
+    }
+
+    public void checkActions(float deltatime){
+        if(currentState == State.JUMPING){
+            if(sprite.getY() < 64) {
+                sprite.translateY(96 * deltatime);
+                sprite.rotate(45);
+            }
+            else{
+                currentState = State.FALLING;
+            }
+        }
+        else if(currentState == State.FALLING){
+            if(sprite.getY() > 32){
+                sprite.translateY(-96 * deltatime);
+                sprite.rotate(45);
+            }
+            else{
+                sprite.setY(32);
+                float rotation = sprite.getRotation();
+                sprite.rotate(360f - rotation);
+                currentState = State.RUNNING;
+            }
+        }
+        else if (currentState == State.DUCKING){
+            //PLACEHOLDER
+            //this.setPosition(sprite.getX(), 16);
+            animationTime += deltatime;
+            sprite.setScale(1,0.5f);
+            this.setPosition(sprite.getX(), 24);
+            if(animationTime >= animationTimeEnd){
+                currentState = State.RUNNING;
+                this.setPosition(sprite.getX(), 32);
+                sprite.setScale(1,1);
+                animationTime = 0;
+            }
+        }
+        else if (currentState == State.ATTACKING){
+            animationTime += deltatime;
+            sprite.setRegion(attackTexture);
+            if (animationTime >= animationTimeEnd){
+                currentState = State.RUNNING;
+                sprite.setRegion(idleTexture);
+                animationTime = 0;
+            }
+        }
     }
 
     public void gotHit(){

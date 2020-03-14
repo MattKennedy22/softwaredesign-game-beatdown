@@ -8,6 +8,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.juniordesign.beatdown.entities.Enemy;
+
+import java.util.ArrayList;
 
 //PROB MAKE THIS AN ABSTRACT AND DIFF CLASSES
 public abstract class MapManager {
@@ -15,6 +18,7 @@ public abstract class MapManager {
     private TiledMap tiledMap;
     protected OrthogonalTiledMapRenderer tiledMapRenderer;
     protected MapLayer collideLayer;
+    protected MapLayer spawnLayer;
     protected TiledMapTileLayer obstacleLayer;
     protected int[] decorationLayersIndices;
 
@@ -25,6 +29,7 @@ public abstract class MapManager {
         MapLayers mapLayers = tiledMap.getLayers();
         obstacleLayer = (TiledMapTileLayer) mapLayers.get("Obstacles");
         collideLayer = mapLayers.get("ObstacleObjects");
+        spawnLayer = mapLayers.get("EnemySpawns");
 
         decorationLayersIndices = new int[] {
                 mapLayers.getIndex("Background"),
@@ -44,6 +49,8 @@ public abstract class MapManager {
     }
 
     abstract public MapLayer getCollideLayer();
+
+    abstract public void spawnEnemies(ArrayList<Enemy> enemies);
 
     public void dispose(){
         tiledMap.dispose();
