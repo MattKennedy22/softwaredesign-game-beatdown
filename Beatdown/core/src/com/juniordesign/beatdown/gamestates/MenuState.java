@@ -14,11 +14,11 @@ public class MenuState extends GameState {
 
     int x =24;
 
-    public MenuState(GameStateManager gsm){ //constructor
-        super(gsm);
+    public MenuState(GameStateManager gsm, String mapName){
+        super(gsm, mapName);
     }
 
-    public void init(){
+    public void init(String mapName){
 
         background = new Background();
         background.setPosition(0,0);
@@ -83,7 +83,8 @@ public class MenuState extends GameState {
         }
     }
     public void dispose(){
-
+        background.dispose();
+        select.dispose();
     }
 
 

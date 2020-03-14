@@ -2,25 +2,24 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.juniordesign.beatdown.entities.Dewey;
 import com.juniordesign.beatdown.managers.GameStateManager;
-import com.juniordesign.beatdown.managers.MapManager;
+import com.juniordesign.beatdown.managers.maps.BossFightMap;
 
 public class BossFightState extends GameState {
 
     private Dewey player;
 
     public BossFightState(GameStateManager gsm, String mapName){
-        super(gsm);
-        mapManager = new MapManager(mapName);
+        super(gsm,mapName);
     }
 
-    public void init(){
+    public void init(String mapName){
         player = new Dewey();
         player.setPosition(64,32);
         camera.setToOrtho(false, 256, 144);
         camera.update();
+        mapManager = new BossFightMap(mapName);
     }
     public void update(float deltatime){
         //CHANGE THIS

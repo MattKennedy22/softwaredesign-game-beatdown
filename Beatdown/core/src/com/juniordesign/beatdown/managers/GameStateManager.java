@@ -34,7 +34,7 @@ public class GameStateManager {
             gameState.dispose();
         }
         if(state == MENU) {
-            gameState = new MenuState(this);
+            gameState = new MenuState(this, "null");
         }
         if(state == LEVELSELECT) {
             // switch to level select

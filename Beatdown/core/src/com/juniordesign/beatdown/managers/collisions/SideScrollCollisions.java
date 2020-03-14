@@ -1,23 +1,18 @@
-package com.juniordesign.beatdown.managers;
+package com.juniordesign.beatdown.managers.collisions;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.juniordesign.beatdown.entities.Dewey;
 
-import java.awt.*;
+public class SideScrollCollisions implements CollisionManager{
 
-//MAKE THIS COLLISIONMANAGER FOR SIDESCROLL EXTEND ABSTRACT
-public class CollisionManager {
     private MapLayer collideLayer;
     private Dewey player;
     private float timeSinceCollision;
 
-    public CollisionManager(MapLayer collideLayer, Dewey player){
+    public SideScrollCollisions(MapLayer collideLayer, Dewey player){
         this.collideLayer = collideLayer;
         this.player = player;
         timeSinceCollision = 0;
@@ -29,7 +24,7 @@ public class CollisionManager {
         for(RectangleMapObject rectangleObject : objects.getByType(RectangleMapObject.class)){
             Rectangle rectangle = rectangleObject.getRectangle();
 
-            if(rectangle.overlaps(player.getFrontHitbox())){
+            if(rectangle.overlaps(player.getNormalHitbox())){
                 //COLLISION
                 isColliding = true;
                 if(timeSinceCollision == 0f) {
@@ -45,5 +40,4 @@ public class CollisionManager {
             timeSinceCollision = 0;
         }
     }
-
 }
