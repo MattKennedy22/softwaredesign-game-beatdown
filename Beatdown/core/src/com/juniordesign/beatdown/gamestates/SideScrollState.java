@@ -17,6 +17,8 @@ public class SideScrollState extends GameState {
     private Dewey player;
     private ArrayList<Enemy> enemies;
     private Music music;
+    double startTime = System.currentTimeMillis();
+
 
     public SideScrollState (GameStateManager gsm, String mapName){
         super(gsm,mapName);
@@ -28,7 +30,6 @@ public class SideScrollState extends GameState {
         music.setLooping(true);
         music.setVolume(0.1f);
         music.play();
-
 
 
         player = new Dewey();
@@ -67,13 +68,14 @@ public class SideScrollState extends GameState {
     public void handleInput(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            //if(((0 <= (music.getPosition()%0.7317)) && (0.1 >= (music.getPosition()%0.7317))) || ((0.6317 <= (music.getPosition()%0.7317)) || (0.7317 <= (music.getPosition()%0.7317))))
+
+            if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
             {
                 player.attack(enemies);
             }
         }
         else if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
-            //if(((0 <= (music.getPosition()%0.7317)) && (0.1 >= (music.getPosition()%0.7317))) || ((0.6317 <= (music.getPosition()%0.7317)) || (0.7317 <= (music.getPosition()%0.7317))))
+            if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
             {
                 if(player.getAnimationTime() == 0) {
                     player.jump();
@@ -81,7 +83,7 @@ public class SideScrollState extends GameState {
             }
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
-            //if(((0 <= (music.getPosition()%0.7317)) && (0.36585 >= (music.getPosition()%0.7317))) || ((0 <= (music.getPosition()%0.7317)) || (0.36585 <= (music.getPosition()%0.7317))))
+            if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
             {
                 player.duck();
             }
