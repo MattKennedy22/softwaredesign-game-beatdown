@@ -2,24 +2,29 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.juniordesign.beatdown.entities.Boss;
 import com.juniordesign.beatdown.entities.Dewey;
 import com.juniordesign.beatdown.managers.GameStateManager;
-import com.juniordesign.beatdown.managers.maps.BossFightMap;
+import com.juniordesign.beatdown.managers.maps.SideScrollMap;
 
 public class BossFightState extends GameState {
 
     private Dewey player;
-
+    private Boss boss;
     public BossFightState(GameStateManager gsm, String mapName){
         super(gsm,mapName);
     }
 
+
     public void init(String mapName){
         player = new Dewey();
         player.setPosition(64,32);
+        boss = new Boss();
+        boss.setPosition(160, 32);
+        mapManager = new SideScrollMap(mapName);
         camera.setToOrtho(false, 256, 144);
         camera.update();
-        mapManager = new BossFightMap(mapName);
     }
     public void update(float deltatime){
         //CHANGE THIS
@@ -34,6 +39,7 @@ public class BossFightState extends GameState {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         player.draw(batch);
+        boss.draw(batch);
         batch.end();
     }
     public void handleInput(){
@@ -43,14 +49,24 @@ public class BossFightState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.A)){
             player.moveLeft();
         }
-        // JUST TEST TO SWITCH STATES
+        if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
+            player.jump();
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.S)){
+            player.duck();
+        }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+            //attack in dewey class
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             gsm.setGameState(GameStateManager.SIDESCROLL);
         }
     }
     public void dispose(){
         player.dispose();
+        boss.dispose();
         mapManager.dispose();
         //tiledMap.dispose();
     }
 }
+
