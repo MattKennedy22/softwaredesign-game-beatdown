@@ -2,10 +2,7 @@ package com.juniordesign.beatdown.managers;
 
 import com.badlogic.gdx.Game;
 import com.juniordesign.beatdown.BeatdownGame;
-import com.juniordesign.beatdown.gamestates.BossFightState;
-import com.juniordesign.beatdown.gamestates.GameState;
-import com.juniordesign.beatdown.gamestates.MenuState;
-import com.juniordesign.beatdown.gamestates.SideScrollState;
+import com.juniordesign.beatdown.gamestates.*;
 
 public class GameStateManager {
 
@@ -37,7 +34,7 @@ public class GameStateManager {
             gameState = new MenuState(this, "null");
         }
         if(state == LEVELSELECT) {
-            // switch to level select
+            gameState = new LevelSelectState(this, "null");
         }
         if(state == SIDESCROLL) {
             gameState = new SideScrollState(this, "RooftopTest.tmx");

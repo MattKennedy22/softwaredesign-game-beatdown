@@ -65,7 +65,7 @@ public class MenuState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(x == 24)
             {
-                gsm.setGameState(GameStateManager.BOSSFIGHT); //starts level select but if we select 2 for this then we can jump
+                gsm.setGameState(GameStateManager.LEVELSELECT); //starts level select but if we select 2 for this then we can jump
                                     // right into side scroller for first iteration demo
             }
             else if (x == 110)
