@@ -2,6 +2,7 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.juniordesign.beatdown.entities.Dewey;
 import com.juniordesign.beatdown.entities.Enemy;
 import com.juniordesign.beatdown.managers.collisions.CollisionManager;
@@ -15,12 +16,20 @@ public class SideScrollState extends GameState {
 
     private Dewey player;
     private ArrayList<Enemy> enemies;
+    private Music music;
+
 
     public SideScrollState (GameStateManager gsm, String mapName){
         super(gsm,mapName);
     }
 
     public void init(String mapName){
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("cityMusic.mp3"));
+        music.setLooping(true);
+        music.setVolume(0.1f);
+        music.play();
+
         player = new Dewey();
         player.setPosition(64,32);
         enemies = new ArrayList<Enemy>();
@@ -73,5 +82,6 @@ public class SideScrollState extends GameState {
         for(Enemy enemy : enemies){
             enemy.dispose();
         }
+        music.dispose();
     }
 }
