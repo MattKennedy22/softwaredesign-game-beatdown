@@ -17,7 +17,7 @@ public class Dewey {
     private Texture texture;
     private TextureRegion idleTexture,attackTexture;
     private int health;
-    private int runSpeed;
+    private float runSpeed;
     private float animationTimeEnd;
     private float animationTime;
     private enum State {JUMPING,FALLING,DUCKING,ATTACKING,RUNNING,GETTINGHIT}
@@ -34,7 +34,7 @@ public class Dewey {
         frontHitbox = new Rectangle(0, 0, 32, 32);
         this.setPosition(0,0);
 
-        runSpeed = 192; //pixels per second
+        runSpeed = 175.755999f; //pixels per second
         health = 5;
         currentState = State.RUNNING;
         animationTimeEnd = 64f / runSpeed;
@@ -50,7 +50,7 @@ public class Dewey {
         return normalHitbox;
     }
 
-    public int getRunSpeed(){
+    public float getRunSpeed(){
         return runSpeed;
     }
 
@@ -190,6 +190,7 @@ public class Dewey {
 
     public void gotHit(){
         if(currentState != State.GETTINGHIT) {
+            animationTime = 0;
             health--;
             currentState = State.GETTINGHIT;
         }
