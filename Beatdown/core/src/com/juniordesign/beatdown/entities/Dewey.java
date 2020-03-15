@@ -178,6 +178,7 @@ public class Dewey {
             sprite.rotate(360f - rotation);
             sprite.setScale(1,1);
             this.setPosition(sprite.getX(), 32);
+            sprite.setRegion(idleTexture);
             sprite.setColor(Color.RED);
             if(animationTime >= animationTimeEnd){
                 currentState = State.RUNNING;
