@@ -50,6 +50,8 @@ public abstract class MapManager {
 
     abstract public MapLayer getCollideLayer();
 
+    abstract public MapLayer getSpawnLayer();
+
     abstract public void spawnEnemies(ArrayList<Enemy> enemies);
 
     public void dispose(){

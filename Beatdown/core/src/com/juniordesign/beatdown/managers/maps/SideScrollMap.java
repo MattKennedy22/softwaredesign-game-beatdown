@@ -24,6 +24,10 @@ public class SideScrollMap extends MapManager {
         return collideLayer;
     }
 
+    public MapLayer getSpawnLayer(){
+        return spawnLayer;
+    }
+
     public void spawnEnemies(ArrayList<Enemy> enemies){
         MapObjects objects = spawnLayer.getObjects();
         for(RectangleMapObject spawnPoint : objects.getByType(RectangleMapObject.class)) {

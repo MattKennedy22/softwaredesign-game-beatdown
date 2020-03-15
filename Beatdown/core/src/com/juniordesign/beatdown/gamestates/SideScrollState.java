@@ -36,7 +36,7 @@ public class SideScrollState extends GameState {
         camera.update();
 
         //TEST COLLISIONS
-        collisionManager.checkCollisions(deltatime);
+        collisionManager.checkCollisions(deltatime, enemies);
         if(player.getHealth() <= 0){
             gsm.setGameState(GameStateManager.BOSSFIGHT);
         }

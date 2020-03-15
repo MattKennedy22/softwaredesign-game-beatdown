@@ -1,5 +1,6 @@
 package com.juniordesign.beatdown.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,7 +20,7 @@ public class Dewey {
     private int runSpeed;
     private float animationTimeEnd;
     private float animationTime;
-    private enum State {JUMPING,FALLING,DUCKING,ATTACKING,RUNNING}
+    private enum State {JUMPING,FALLING,DUCKING,ATTACKING,RUNNING,GETTINGHIT}
     private State currentState;
 
     // Constructor
@@ -159,10 +160,22 @@ public class Dewey {
                 animationTime = 0;
             }
         }
+        else if (currentState == State.GETTINGHIT){
+            animationTime += deltatime;
+            sprite.setColor(Color.RED);
+            if(animationTime >= animationTimeEnd){
+                currentState = State.RUNNING;
+                sprite.setColor(Color.WHITE);
+                animationTime = 0;
+            }
+        }
     }
 
     public void gotHit(){
-        health--;
+        if(currentState != State.GETTINGHIT) {
+            health--;
+            currentState = State.GETTINGHIT;
+        }
     }
     public void draw(SpriteBatch batch) {
         sprite.draw(batch);
