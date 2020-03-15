@@ -30,7 +30,7 @@ public class Dewey {
         attackTexture = new TextureRegion(texture,96,0,32,32);
 
         sprite = new Sprite(idleTexture, 0, 0, 32, 32);
-        normalHitbox = new Rectangle(0,0, 32, 16);
+        normalHitbox = new Rectangle(0,0, 16, 16);
         frontHitbox = new Rectangle(0, 0, 32, 32);
         this.setPosition(0,0);
 
@@ -65,7 +65,7 @@ public class Dewey {
     public void setPosition(float x, float y) {
         sprite.setPosition(x, y);
         frontHitbox.setPosition(x+32, y);
-        normalHitbox.setPosition(x,y+8);
+        normalHitbox.setPosition(x+8,y+8);
     }
 
 
@@ -117,13 +117,25 @@ public class Dewey {
     }
 
     public void checkActions(float deltatime){
-        if(currentState == State.JUMPING){
-            if(sprite.getY() < 64) {
+        if(currentState == State.JUMPING) {
+            animationTime += deltatime;
+            this.setPosition(sprite.getX(), 64);
+            sprite.rotate(45);
+
+            if (animationTime >= animationTimeEnd) {
+                this.setPosition(sprite.getX(), 32);
+                float rotation = sprite.getRotation();
+                sprite.rotate(360f - rotation);
+                currentState = State.RUNNING;
+                animationTime = 0;
+            }
+        }
+         /*   if(sprite.getY() < 64) {
                 sprite.translateY(96 * deltatime);
                 sprite.rotate(45);
             }
             else{
-                currentState = State.FALLING;
+                currentState = State.RUNNING;
             }
         }
         else if(currentState == State.FALLING){
@@ -137,7 +149,7 @@ public class Dewey {
                 sprite.rotate(360f - rotation);
                 currentState = State.RUNNING;
             }
-        }
+        }*/
         else if (currentState == State.DUCKING){
             //PLACEHOLDER
             //this.setPosition(sprite.getX(), 16);
@@ -162,6 +174,10 @@ public class Dewey {
         }
         else if (currentState == State.GETTINGHIT){
             animationTime += deltatime;
+            float rotation = sprite.getRotation();
+            sprite.rotate(360f - rotation);
+            sprite.setScale(1,1);
+            this.setPosition(sprite.getX(), 32);
             sprite.setColor(Color.RED);
             if(animationTime >= animationTimeEnd){
                 currentState = State.RUNNING;
