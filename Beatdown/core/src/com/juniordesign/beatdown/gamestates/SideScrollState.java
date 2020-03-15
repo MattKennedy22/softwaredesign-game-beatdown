@@ -18,7 +18,6 @@ public class SideScrollState extends GameState {
     private ArrayList<Enemy> enemies;
     private Music music;
 
-
     public SideScrollState (GameStateManager gsm, String mapName){
         super(gsm,mapName);
     }
@@ -29,6 +28,8 @@ public class SideScrollState extends GameState {
         music.setLooping(true);
         music.setVolume(0.1f);
         music.play();
+
+
 
         player = new Dewey();
         player.setPosition(64,32);
@@ -64,16 +65,26 @@ public class SideScrollState extends GameState {
         batch.end();
     }
     public void handleInput(){
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            player.attack(enemies);
+            //if(((0 <= (music.getPosition()%0.7317)) && (0.1 >= (music.getPosition()%0.7317))) || ((0.6317 <= (music.getPosition()%0.7317)) || (0.7317 <= (music.getPosition()%0.7317))))
+            {
+                player.attack(enemies);
+            }
         }
         else if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
-            if(player.getAnimationTime() == 0){
-                player.jump();
+            //if(((0 <= (music.getPosition()%0.7317)) && (0.1 >= (music.getPosition()%0.7317))) || ((0.6317 <= (music.getPosition()%0.7317)) || (0.7317 <= (music.getPosition()%0.7317))))
+            {
+                if(player.getAnimationTime() == 0) {
+                    player.jump();
+                }
             }
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
-            player.duck();
+            //if(((0 <= (music.getPosition()%0.7317)) && (0.36585 >= (music.getPosition()%0.7317))) || ((0 <= (music.getPosition()%0.7317)) || (0.36585 <= (music.getPosition()%0.7317))))
+            {
+                player.duck();
+            }
         }
     }
     public void dispose(){
