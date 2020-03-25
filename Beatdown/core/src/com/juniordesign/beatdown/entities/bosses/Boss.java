@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.juniordesign.beatdown.entities.Projectile;
+
+import java.util.ArrayList;
 
 public abstract class Boss {
     protected Rectangle hitbox;
@@ -17,6 +20,7 @@ public abstract class Boss {
     protected State currentState;
     protected float animationTime;
     protected float animationEnd;
+    protected ArrayList<Projectile> projectiles;
 
     // Constructor
     public Boss(String image) {
@@ -28,6 +32,10 @@ public abstract class Boss {
 
         currentState = State.IDLE;
 
+    }
+
+    public ArrayList<Projectile> getProjectiles() {
+        return projectiles;
     }
 
     public abstract void doActions(float deltatime);
@@ -50,12 +58,8 @@ public abstract class Boss {
         health--;
     }
 
-    public void draw(SpriteBatch batch) {
-        sprite.draw(batch);
-    }
+    abstract public void draw(SpriteBatch batch);
 
-    public void dispose() {
-        texture.dispose();
-    }
+    abstract public void dispose();
 
 }

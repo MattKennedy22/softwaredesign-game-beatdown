@@ -8,6 +8,7 @@ import com.juniordesign.beatdown.entities.DeweySideScroll;
 import com.juniordesign.beatdown.entities.bosses.Smore;
 import com.juniordesign.beatdown.levels.Level;
 import com.juniordesign.beatdown.managers.GameStateManager;
+import com.juniordesign.beatdown.managers.collisions.BossFightCollisions;
 import com.juniordesign.beatdown.managers.maps.BossFightMap;
 
 public class BossFightState extends GameState {
@@ -27,6 +28,8 @@ public class BossFightState extends GameState {
         player.setPosition(64,32);
         boss = new Smore();
         mapManager = new BossFightMap(level.getLevelMap());
+        collisionManager = new BossFightCollisions(boss, player);
+
         camera.setToOrtho(false, 256, 144);
         camera.update();
     }
@@ -36,6 +39,9 @@ public class BossFightState extends GameState {
         handleInput();
         player.checkActions(deltatime);
         boss.doActions(deltatime);
+
+        //Check collisions
+        collisionManager.checkCollisions(deltatime, null);
     }
     public void draw(){
         //tiledMapRenderer.setView(camera);
