@@ -14,17 +14,20 @@ public class MenuState extends GameState {
 
     int x =24;
 
-    public MenuState(GameStateManager gsm, String mapName){
-        super(gsm, mapName);
+    public MenuState(GameStateManager gsm){
+        super(gsm);
     }
 
-    public void init(String mapName){
+    public void init(){
 
         background = new Background();
         background.setPosition(0,0);
 
         select = new SelectBar();
         select.setPosition(24,-6);
+
+        camera.setToOrtho(false, 256, 144);
+        camera.update();
 
     }
     public void update(float deltatime){

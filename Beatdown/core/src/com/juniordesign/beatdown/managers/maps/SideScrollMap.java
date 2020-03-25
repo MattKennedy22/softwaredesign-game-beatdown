@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.juniordesign.beatdown.entities.Enemy;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SideScrollMap extends MapManager {
 
@@ -28,11 +29,13 @@ public class SideScrollMap extends MapManager {
         return spawnLayer;
     }
 
-    public void spawnEnemies(ArrayList<Enemy> enemies){
+    public void spawnEnemies(ArrayList<Enemy> enemies, ArrayList<String> enemyFileNames){
         MapObjects objects = spawnLayer.getObjects();
         for(RectangleMapObject spawnPoint : objects.getByType(RectangleMapObject.class)) {
             Rectangle rectangle = spawnPoint.getRectangle();
-            Enemy enemy = new Enemy();
+            int rand = new Random().nextInt(enemyFileNames.size());
+            rand = rand % enemyFileNames.size();
+            Enemy enemy = new Enemy(enemyFileNames.get(rand));
             enemy.setPosition(rectangle.getX() + rectangle.getWidth()/2, rectangle.getY() + rectangle.getHeight()/2);
             enemies.add(enemy);
         }

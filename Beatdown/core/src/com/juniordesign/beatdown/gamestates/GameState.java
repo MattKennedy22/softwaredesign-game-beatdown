@@ -20,16 +20,16 @@ public abstract class GameState {
     protected MapManager mapManager;
     protected CollisionManager collisionManager;
 
-    protected GameState(GameStateManager gsm, String mapName){
+    protected GameState(GameStateManager gsm){
         this.gsm = gsm;
         game = gsm.getGame();
         batch = game.getBatch();
         camera = game.getCamera();
 
-        init(mapName);
+        init();
     }
 
-    public abstract void init(String mapName);
+    public abstract void init();
     public abstract void update(float deltatime);
     public abstract void draw();
     public abstract void handleInput();

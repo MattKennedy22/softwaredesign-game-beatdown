@@ -3,11 +3,17 @@ package com.juniordesign.beatdown.managers;
 import com.badlogic.gdx.Game;
 import com.juniordesign.beatdown.BeatdownGame;
 import com.juniordesign.beatdown.gamestates.*;
+import com.juniordesign.beatdown.levels.Level;
+import com.juniordesign.beatdown.levels.LevelOne;
+import com.juniordesign.beatdown.levels.LevelTwo;
 
 public class GameStateManager {
 
     // Current game state
     private GameState gameState;
+
+    // Current Level
+    private Level level;
 
     private BeatdownGame game;
 
@@ -26,22 +32,38 @@ public class GameStateManager {
         return game;
     }
 
+    public Level getLevel(){
+        return level;
+    }
+
     public void setGameState(int state){
         if(gameState != null){
             gameState.dispose();
         }
         if(state == MENU) {
-            gameState = new MenuState(this, "null");
+            gameState = new MenuState(this);
         }
         if(state == LEVELSELECT) {
-            gameState = new LevelSelectState(this, "null");
+            gameState = new LevelSelectState(this);
         }
         if(state == SIDESCROLL) {
-            gameState = new SideScrollState(this, "RooftopTest.tmx");
+            gameState = new SideScrollState(this);
         }
         if(state == BOSSFIGHT) {
             // switch to bossfight
-            gameState = new BossFightState(this, "RooftopTest.tmx");
+            gameState = new BossFightState(this);
+        }
+    }
+
+    public void setLevel(int levelNum){
+        if(levelNum == 1){
+            this.level = new LevelOne();
+        }
+        else if(levelNum == 2){
+            this.level = new LevelTwo();
+        }
+        else if(levelNum == 3){
+            //level three
         }
     }
 
