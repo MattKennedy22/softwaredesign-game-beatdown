@@ -16,11 +16,13 @@ public abstract class Boss {
     protected TextureRegion initialTexture;
     protected Texture texture;
     protected int health;
-    protected enum State{IDLE,ATTACKING};
+    protected enum State{IDLE,ATTACKING,DEAD};
     protected State currentState;
     protected float animationTime;
     protected float animationEnd;
     protected ArrayList<Projectile> projectiles;
+    protected Texture projectilesTexture;
+    protected boolean dead;
 
     // Constructor
     public Boss(String image) {
@@ -31,14 +33,24 @@ public abstract class Boss {
         this.setPosition(160,32);
 
         currentState = State.IDLE;
+        dead = false;
 
+    }
+
+
+    public abstract void doActions(float deltatime);
+
+    public boolean getDead() {
+        return dead;
     }
 
     public ArrayList<Projectile> getProjectiles() {
         return projectiles;
     }
 
-    public abstract void doActions(float deltatime);
+    public Sprite getSprite() {
+        return sprite;
+    }
 
     public Rectangle getHitbox(){
         return hitbox;
@@ -56,6 +68,14 @@ public abstract class Boss {
 
     public void gotHit(){
         health--;
+    }
+
+    public void died(){
+        if(currentState != State.DEAD) {
+            currentState = State.DEAD;
+            animationTime = 0;
+            projectilesTexture.dispose();
+        }
     }
 
     abstract public void draw(SpriteBatch batch);

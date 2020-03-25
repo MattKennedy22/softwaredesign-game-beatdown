@@ -8,8 +8,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Projectile {
     private Sprite sprite;
 
-    public Projectile(TextureRegion textureRegion){
+    public Projectile(TextureRegion textureRegion, int width, int height ){
         this.sprite = new Sprite(textureRegion);
+        this.sprite.setSize(width, height);
     }
 
     public Sprite getSprite(){
@@ -21,6 +22,10 @@ public class Projectile {
 
     public void translateX(float x){
         sprite.translateX(x);
+    }
+
+    public void translateY(float y){
+        sprite.translateY(y);
     }
 
     public void draw(SpriteBatch batch){

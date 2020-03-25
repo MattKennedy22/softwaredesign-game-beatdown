@@ -7,6 +7,7 @@ public abstract class Level {
     protected String levelBoss;
     protected String levelMap;
     protected String levelMusic;
+    protected String bossMusic;
     protected ArrayList<String> levelEnemies;
 
     public Level(){
@@ -17,6 +18,10 @@ public abstract class Level {
 
     public String getLevelBoss(){
         return levelBoss;
+    }
+
+    public String getBossMusic() {
+        return bossMusic;
     }
 
     public String getLevelMap(){

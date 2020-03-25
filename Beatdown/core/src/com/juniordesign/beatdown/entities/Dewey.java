@@ -120,9 +120,9 @@ public abstract class Dewey {
         }
         else if (currentState == State.ATTACKING){
             animationTime += deltatime;
-            sprite.setRegion(attackTexture);
             if (animationTime >= animationTimeEnd){
                 currentState = State.IDLE;
+                sprite.setSize(32,32);
                 sprite.setRegion(idleTexture);
                 animationTime = 0;
             }
@@ -134,6 +134,7 @@ public abstract class Dewey {
             sprite.setScale(1,1);
             this.setPosition(sprite.getX(), 32);
             sprite.setRegion(idleTexture);
+            sprite.setSize(32,32);
             sprite.setColor(Color.RED);
             if(animationTime >= animationTimeEnd){
                 currentState = State.IDLE;

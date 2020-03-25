@@ -64,6 +64,11 @@ public class LevelSelectState extends GameState {
                 select.setPosition(x,-6);
             }
         }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+            gsm.setGameState(GameStateManager.MENU);
+        }
+
         // JUST TEST TO SWITCH STATES
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(x == 24)
@@ -75,7 +80,7 @@ public class LevelSelectState extends GameState {
             {
                 //City Stage
                 gsm.setLevel(2);
-                gsm.setGameState(GameStateManager.BOSSFIGHT);
+                gsm.setGameState(GameStateManager.SIDESCROLL);
                 //medium play
 
             }

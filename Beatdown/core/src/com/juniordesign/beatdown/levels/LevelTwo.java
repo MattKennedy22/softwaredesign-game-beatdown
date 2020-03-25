@@ -12,6 +12,7 @@ public class LevelTwo extends Level{
         this.levelBoss = "Smore-Sheet.png";
         this.levelMap = "RooftopTest.tmx";
         this.levelMusic = "cityMusic.mp3";
+        this.bossMusic = "SmoreMusic.mp3";
         this.levelEnemies = new ArrayList<>();
         levelEnemies.add("2notcello.png");
     }

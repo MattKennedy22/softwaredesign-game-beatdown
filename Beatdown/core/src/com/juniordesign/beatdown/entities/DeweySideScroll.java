@@ -104,6 +104,7 @@ public class DeweySideScroll extends Dewey{
 
     public void attack(ArrayList<Enemy> enemies) {
         if(currentState == State.IDLE){
+            sprite.setRegion(attackTexture);
             currentState = State.ATTACKING;
             for(int i = 0; i < enemies.size(); i++){
                 Enemy enemy = enemies.get(i);
