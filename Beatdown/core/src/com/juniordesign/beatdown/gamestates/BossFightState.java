@@ -2,27 +2,41 @@ package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.juniordesign.beatdown.entities.Boss;
-import com.juniordesign.beatdown.entities.Dewey;
+import com.badlogic.gdx.audio.Music;
+import com.juniordesign.beatdown.entities.DeweyBossFight;
+import com.juniordesign.beatdown.entities.bosses.Boss;
+import com.juniordesign.beatdown.entities.DeweySideScroll;
+import com.juniordesign.beatdown.entities.bosses.Smore;
+import com.juniordesign.beatdown.levels.Level;
 import com.juniordesign.beatdown.managers.GameStateManager;
-import com.juniordesign.beatdown.managers.maps.SideScrollMap;
+import com.juniordesign.beatdown.managers.collisions.BossFightCollisions;
+import com.juniordesign.beatdown.managers.maps.BossFightMap;
 
 public class BossFightState extends GameState {
 
-    private Dewey player;
+    private DeweyBossFight player;
     private Boss boss;
-    public BossFightState(GameStateManager gsm, String mapName){
-        super(gsm,mapName);
+    private Music music;
+    private Level level;
+
+    public BossFightState(GameStateManager gsm){
+        super(gsm);
     }
 
 
-    public void init(String mapName){
-        player = new Dewey();
+    public void init(){
+        level = gsm.getLevel();
+        music = Gdx.audio.newMusic(Gdx.files.internal(level.getBossMusic()));
+        music.setLooping(true);
+        music.setVolume(0.1f);
+        music.play();
+
+        player = new DeweyBossFight();
         player.setPosition(64,32);
-        boss = new Boss();
-        boss.setPosition(160, 32);
-        mapManager = new SideScrollMap(mapName);
+        boss = new Smore();
+        mapManager = new BossFightMap(level.getLevelMap());
+        collisionManager = new BossFightCollisions(boss, player);
+
         camera.setToOrtho(false, 256, 144);
         camera.update();
     }
@@ -30,6 +44,23 @@ public class BossFightState extends GameState {
         //CHANGE THIS
         camera.update();
         handleInput();
+        player.checkActions(deltatime);
+        boss.doActions(deltatime);
+
+        //Check collisions
+        collisionManager.checkCollisions(deltatime, null);
+
+        if(player.getHealth() <= 0){
+            gsm.setGameState(GameStateManager.MENU);
+        }
+
+        if(boss.getHealth() <= 0){
+            boss.died();
+        }
+
+        if(boss.getDead()){
+            gsm.setGameState(GameStateManager.LEVELSELECT);
+        }
     }
     public void draw(){
         //tiledMapRenderer.setView(camera);
@@ -56,7 +87,7 @@ public class BossFightState extends GameState {
             player.duck();
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            //attack in dewey class
+            player.attack(boss);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             gsm.setGameState(GameStateManager.SIDESCROLL);
@@ -66,6 +97,7 @@ public class BossFightState extends GameState {
         player.dispose();
         boss.dispose();
         mapManager.dispose();
+        music.dispose();
         //tiledMap.dispose();
     }
 }

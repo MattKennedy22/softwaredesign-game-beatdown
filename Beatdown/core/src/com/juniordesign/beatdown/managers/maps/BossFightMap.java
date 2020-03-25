@@ -24,7 +24,7 @@ public class BossFightMap extends MapManager {
     public MapLayer getSpawnLayer() {return spawnLayer;}
 
     @Override
-    public void spawnEnemies(ArrayList<Enemy> enemies) {
+    public void spawnEnemies(ArrayList<Enemy> enemies, ArrayList<String> enemyFileNames) {
 
     }
 }

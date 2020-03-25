@@ -52,7 +52,7 @@ public abstract class MapManager {
 
     abstract public MapLayer getSpawnLayer();
 
-    abstract public void spawnEnemies(ArrayList<Enemy> enemies);
+    abstract public void spawnEnemies(ArrayList<Enemy> enemies,  ArrayList<String> enemyFileNames);
 
     public void dispose(){
         tiledMap.dispose();

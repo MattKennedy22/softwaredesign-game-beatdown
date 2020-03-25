@@ -8,8 +8,8 @@ public class Enemy {
     private Sprite sprite;
     private Texture texture;
 
-    public Enemy(){
-        texture = new Texture("2notcello.png");
+    public Enemy(String fileName){
+        texture = new Texture(fileName);
         sprite = new Sprite(texture);
 
     }
