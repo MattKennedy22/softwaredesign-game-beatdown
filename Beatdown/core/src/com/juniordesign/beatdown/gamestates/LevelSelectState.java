@@ -75,6 +75,9 @@ public class LevelSelectState extends GameState {
             {
                 //gsm.setGameState(GameStateManager.BOSSFIGHT); //starts level select but if we select 2 for this then we can jump
                 // right into side scroller for first iteration demo
+
+                gsm.setLevel(1);
+                gsm.setGameState(GameStateManager.SIDESCROLL);
             }
             else if (x == 110)
             {
