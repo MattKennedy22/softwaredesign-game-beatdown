@@ -22,7 +22,6 @@ public abstract class MapManager {
     protected TiledMapTileLayer obstacleLayer;
     protected int[] decorationLayersIndices;
 
-
     public MapManager(String mapName){
         tiledMap = new TmxMapLoader().load(mapName);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
