@@ -75,6 +75,7 @@ public abstract class Boss {
             currentState = State.DEAD;
             animationTime = 0;
             projectilesTexture.dispose();
+            projectiles.clear();
         }
     }
 

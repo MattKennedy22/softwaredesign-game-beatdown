@@ -121,7 +121,7 @@ public class Smore extends Boss {
         if(animationTime == 0) {
             TextureRegion bassGuitar = new TextureRegion(projectilesTexture, 0,0,32,32);
             TextureRegion bassFish = new TextureRegion(projectilesTexture,32,0,32,32);
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 9; i++) {
                 int randItem = new Random().nextInt(2);
                 int randLocation = new Random().nextInt(5);
                 if(randItem == 0){
