@@ -34,6 +34,7 @@ public class SideScrollState extends GameState {
 
 
         player = new DeweySideScroll();
+        player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);
         enemies = new ArrayList<Enemy>();
         mapManager = new SideScrollMap(level.getLevelMap());

@@ -87,6 +87,8 @@ public class LevelSelectState extends GameState {
             else if (x==196)
             {
                 //hard play
+                gsm.setLevel(3);
+                gsm.setGameState(GameStateManager.SIDESCROLL);
             }
         }
     }

@@ -32,6 +32,7 @@ public class BossFightState extends GameState {
         music.play();
 
         player = new DeweyBossFight();
+        player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);
         boss = new Smore();
         mapManager = new BossFightMap(level.getLevelMap());

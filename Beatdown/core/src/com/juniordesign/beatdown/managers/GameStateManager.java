@@ -5,6 +5,7 @@ import com.juniordesign.beatdown.BeatdownGame;
 import com.juniordesign.beatdown.gamestates.*;
 import com.juniordesign.beatdown.levels.Level;
 import com.juniordesign.beatdown.levels.LevelOne;
+import com.juniordesign.beatdown.levels.LevelThree;
 import com.juniordesign.beatdown.levels.LevelTwo;
 
 public class GameStateManager {
@@ -63,7 +64,7 @@ public class GameStateManager {
             this.level = new LevelTwo();
         }
         else if(levelNum == 3){
-            //level three
+            this.level = new LevelThree();
         }
     }
 

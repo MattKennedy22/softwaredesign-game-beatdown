@@ -8,6 +8,7 @@ public abstract class Level {
     protected String levelMap;
     protected String levelMusic;
     protected String bossMusic;
+    protected float runSpeed;
     protected ArrayList<String> levelEnemies;
 
     public Level(){
@@ -30,6 +31,10 @@ public abstract class Level {
 
     public String getLevelMusic(){
         return levelMusic;
+    }
+
+    public float getRunSpeed() {
+        return runSpeed;
     }
 
     public ArrayList<String> getLevelEnemies() {return levelEnemies;}
