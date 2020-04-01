@@ -21,6 +21,7 @@ public class GameStateManager {
     public static final int LEVELSELECT = 1;
     public static final int SIDESCROLL = 2;
     public static final int BOSSFIGHT = 3;
+    public static final int HELPMENU = 9;
 
     public GameStateManager(BeatdownGame game){
         this.game = game;
@@ -53,6 +54,9 @@ public class GameStateManager {
             // switch to bossfight
             gameState = new BossFightState(this);
         }
+        if(state == HELPMENU) {
+            gameState = new HelpMenuState(this);
+        }
     }
 
     public void setLevel(int levelNum){
@@ -63,6 +67,7 @@ public class GameStateManager {
             this.level = new LevelTwo();
         }
         else if(levelNum == 3){
+            //x = HellLever
             //level three
         }
     }

@@ -73,11 +73,7 @@ public class MenuState extends GameState {
             }
             else if (x == 110)
             {
-                //show Controls.png
-                //if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-                //close the Controls.png image
-                //}
-
+                gsm.setGameState(GameStateManager.HELPMENU);
             }
             else if (x==196)
             {

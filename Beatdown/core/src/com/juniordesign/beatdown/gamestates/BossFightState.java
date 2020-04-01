@@ -6,8 +6,11 @@ import com.badlogic.gdx.audio.Music;
 import com.juniordesign.beatdown.entities.DeweyBossFight;
 import com.juniordesign.beatdown.entities.bosses.Boss;
 import com.juniordesign.beatdown.entities.DeweySideScroll;
+import com.juniordesign.beatdown.entities.bosses.DudeLove;
 import com.juniordesign.beatdown.entities.bosses.Smore;
 import com.juniordesign.beatdown.levels.Level;
+import com.juniordesign.beatdown.levels.LevelOne;
+import com.juniordesign.beatdown.levels.LevelTwo;
 import com.juniordesign.beatdown.managers.GameStateManager;
 import com.juniordesign.beatdown.managers.collisions.BossFightCollisions;
 import com.juniordesign.beatdown.managers.maps.BossFightMap;
@@ -24,7 +27,7 @@ public class BossFightState extends GameState {
     }
 
 
-    public void init(){
+    public void init() {
         level = gsm.getLevel();
         music = Gdx.audio.newMusic(Gdx.files.internal(level.getBossMusic()));
         music.setLooping(true);
@@ -32,8 +35,21 @@ public class BossFightState extends GameState {
         music.play();
 
         player = new DeweyBossFight();
-        player.setPosition(64,32);
-        boss = new Smore();
+        player.setPosition(64, 32);
+        //boss = new Smore();
+
+        if (level.getDifficulty() == 1) {
+            boss = new DudeLove();
+        }
+
+        else if (level.getDifficulty() == 2) {
+            boss = new Smore();
+        }
+        //else if (level.getDifficulty() == 3){
+        //  boss = new Devil();
+        //}
+
+
         mapManager = new BossFightMap(level.getLevelMap());
         collisionManager = new BossFightCollisions(boss, player);
 
@@ -89,9 +105,7 @@ public class BossFightState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
             player.attack(boss);
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-            gsm.setGameState(GameStateManager.SIDESCROLL);
-        }
+
     }
     public void dispose(){
         player.dispose();

@@ -10,14 +10,21 @@ public abstract class Level {
     protected String bossMusic;
     protected ArrayList<String> levelEnemies;
 
+    protected int difficulty;
+
+
     public Level(){
         this.init();
     }
 
     abstract protected void init();
 
-    public String getLevelBoss(){
+        public String getLevelBoss(){
         return levelBoss;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
     }
 
     public String getBossMusic() {

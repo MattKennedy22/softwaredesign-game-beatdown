@@ -19,7 +19,7 @@ public class Smore extends Boss {
     }
 
     private void init(){
-        yellowIdleTexture = new TextureRegion(texture, 96, 0, 96, 96);
+        yellowIdleTexture = new TextureRegion(texture, 96, 0, 96, 96); //x at what point in the sheet
         redIdleTexture = new TextureRegion(texture, 192, 0, 96, 96);
         greenAttackTexture = new TextureRegion(texture, 288, 0, 96, 96);
         yellowAttackTexture = new TextureRegion(texture, 384, 0, 96, 96);

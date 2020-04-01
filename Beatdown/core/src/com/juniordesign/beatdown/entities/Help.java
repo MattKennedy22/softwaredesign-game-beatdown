@@ -17,8 +17,8 @@ public class Help {
     // Constructor
     public Help() {
 
-        help = new Texture("Controls.png");
-        HelpSprite = new Sprite(help, 0, 0, 200, 92);
+        help = new Texture("BgdHELP.png");
+        HelpSprite = new Sprite(help, 0, 0, 256, 144);
         this.setPosition(0, 0);
     }
 
