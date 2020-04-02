@@ -18,7 +18,6 @@ public class SideScrollState extends GameState {
     private DeweySideScroll player;
     private ArrayList<Enemy> enemies;
     private Music music;
-    private double startTime = System.currentTimeMillis();
     private Level level;
     private int endOfLevel;
     private int cameraEndOfLevel;

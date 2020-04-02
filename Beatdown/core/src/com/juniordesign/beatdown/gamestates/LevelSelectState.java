@@ -76,7 +76,7 @@ public class LevelSelectState extends GameState {
                 // right into side scroller for first iteration demo
 
                 gsm.setLevel(1);
-                gsm.setGameState(GameStateManager.SIDESCROLL);
+                gsm.setGameState(GameStateManager.SIDESCROLL); //!!!!!!
             }
             else if (x == 110)
             {

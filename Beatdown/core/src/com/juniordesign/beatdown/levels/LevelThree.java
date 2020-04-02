@@ -10,10 +10,11 @@ public class LevelThree extends Level {
 
     protected void init(){
         difficulty = 3;
+        levelBPMS = 300.3;
         //this.levelBoss = "Smore-Sheet.png";
         this.levelMap = "HellMap.tmx";
         this.levelMusic = "HellMusic.mp3";
-        this.bossMusic = "SmoreMusic.mp3";
+        this.bossMusic = "HellMusic.mp3";
         this.runSpeed = 266.795166f;//314.2f;//418.962656
         this.endOfLevel = 58500;
         this.levelEnemies = new ArrayList<>();

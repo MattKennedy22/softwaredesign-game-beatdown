@@ -10,6 +10,7 @@ public class LevelOne extends Level {
 
     protected void init(){
         difficulty = 1;
+        levelBPMS = 1262.9;
         //this.levelBoss = "FinalStageBossSheet.png";
         this.levelMap = "StageLevel.tmx"; //temp
         this.levelMusic = "L2SideScroll.mp3";

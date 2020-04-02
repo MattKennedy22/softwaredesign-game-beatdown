@@ -123,7 +123,7 @@ public class DudeLove extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*190)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED //from 190,210
             }
         }
     }
@@ -166,7 +166,7 @@ public class DudeLove extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*190)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
             }
         }
     }
@@ -178,7 +178,7 @@ public class DudeLove extends Boss {
             TextureRegion Harp = new TextureRegion(projectilesTexture,128,0,32,32);
             TextureRegion PeaceSymbol = new TextureRegion(projectilesTexture,160,0,16,16);
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 int randItem = new Random().nextInt(4);
                 if(randItem == 0){
                     Projectile Sax = new Projectile(Saxophone,32,32);
@@ -206,7 +206,7 @@ public class DudeLove extends Boss {
         //After all projectiles are spawned
         else{
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*190));
+                projectile.translateX(-(deltatime*300));
             }
         }
     }

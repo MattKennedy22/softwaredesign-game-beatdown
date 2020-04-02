@@ -13,6 +13,7 @@ public abstract class Level {
     protected ArrayList<String> levelEnemies;
 
     protected int difficulty;
+    protected double levelBPMS;
 
 
     public Level(){
@@ -24,6 +25,10 @@ public abstract class Level {
     /*public String getLevelBoss(){
         return levelBoss;
     }*/
+
+    public double getBPMS(){
+        return levelBPMS;
+    }
 
     public int getDifficulty() {
         return difficulty;
