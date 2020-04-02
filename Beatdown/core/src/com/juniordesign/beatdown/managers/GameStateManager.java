@@ -2,6 +2,7 @@ package com.juniordesign.beatdown.managers;
 
 import com.badlogic.gdx.Game;
 import com.juniordesign.beatdown.BeatdownGame;
+import com.juniordesign.beatdown.entities.GameOverScreen;
 import com.juniordesign.beatdown.gamestates.*;
 import com.juniordesign.beatdown.levels.Level;
 import com.juniordesign.beatdown.levels.LevelOne;
@@ -24,6 +25,9 @@ public class GameStateManager {
     public static final int BOSSFIGHT = 3;
     public static final int HELPMENU = 9;
     public static final int PAUSEMENU = 8;
+    public static final int GAMEOVERMENU = 7;
+
+
 
 
     public GameStateManager(BeatdownGame game){
@@ -62,6 +66,9 @@ public class GameStateManager {
         }
         if(state == PAUSEMENU){
             gameState = new PauseState(this);
+        }
+        if (state == GAMEOVERMENU) {
+            gameState = new GameOverState(this);
         }
     }
 

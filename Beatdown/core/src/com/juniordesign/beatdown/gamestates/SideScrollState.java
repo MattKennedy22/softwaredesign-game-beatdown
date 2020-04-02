@@ -63,7 +63,7 @@ public class SideScrollState extends GameState {
         //TEST COLLISIONS
         collisionManager.checkCollisions(deltatime, enemies);
         if(player.getHealth() <= 0){
-            gsm.setGameState(GameStateManager.MENU);
+            gsm.setGameState(GameStateManager.GAMEOVERMENU);
         }
         handleInput();
         player.checkActions(deltatime);
