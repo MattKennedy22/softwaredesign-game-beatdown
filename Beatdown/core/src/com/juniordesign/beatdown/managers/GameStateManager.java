@@ -27,9 +27,6 @@ public class GameStateManager {
     public static final int PAUSEMENU = 8;
     public static final int GAMEOVERMENU = 7;
 
-
-
-
     public GameStateManager(BeatdownGame game){
         this.game = game;
         // side scroll for test , should start at menu in final product
