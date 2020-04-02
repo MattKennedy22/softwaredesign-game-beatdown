@@ -22,7 +22,6 @@ public class PauseState extends GameState {
 
    public PauseState(GameStateManager gsm){
        super(gsm);
-       this.currentState = currentState;
     }
 
     public void init(){
@@ -33,6 +32,7 @@ public class PauseState extends GameState {
         select = new PauseSelBar();
         select.setPosition(68,77);
 
+        currentState = this.currentState;
 
         camera.setToOrtho(false, 256, 144);
         camera.update();
@@ -75,7 +75,8 @@ public class PauseState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(y == 77)
             {
-
+                gsm.setGameState(GameStateManager.SIDESCROLL);
+                game.resume();
             }
             else if (y == 44)
             {
