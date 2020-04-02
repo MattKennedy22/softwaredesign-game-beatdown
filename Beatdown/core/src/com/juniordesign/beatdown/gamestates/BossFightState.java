@@ -23,9 +23,9 @@ public class BossFightState extends GameState {
     private Boss boss;
     private Music music;
     private Level level;
-    double BPMS;
+    private double BPMS;
 
-    private double startTime = System.currentTimeMillis();
+    private double startTime;
 
     public BossFightState(GameStateManager gsm){
         super(gsm);
@@ -42,8 +42,12 @@ public class BossFightState extends GameState {
         player = new DeweyBossFight();
         player.setPosition(64, 32);
 
+        BPMS = level.getBPMS();
+        startTime = System.currentTimeMillis();
+
         if (level.getDifficulty() == 1) {
             boss = new DudeLove();
+            startTime = startTime + 631.45;
         }
 
         else if (level.getDifficulty() == 2) {
@@ -53,21 +57,7 @@ public class BossFightState extends GameState {
           boss = new DudeLove(); //PLACE HOLDER
         }
 
-        if(level.getBPMS() == 1262.9) {
-            BPMS = 1262.9;
-            //startTime = System.currentTimeMillis() + 631.45;
 
-        }
-        else if(level.getBPMS() == 444.4) {
-            BPMS = 444.4;
-           // startTime = System.currentTimeMillis();
-
-        }
-
-        else if(level.getBPMS() == 300.3) {
-            BPMS = 300.3;
-           // startTime = System.currentTimeMillis();
-        }
 
         gameHUD = new Hud(player,level.getDifficulty());
         player.setRunSpeed(level.getRunSpeed());
@@ -125,7 +115,7 @@ public class BossFightState extends GameState {
 
             gsm.setGameState(GameStateManager.PAUSEMENU);
         }
-        if(level.getDifficulty() == 2 || level.getDifficulty() == 3) {
+        //if(level.getDifficulty() == 2 || level.getDifficulty() == 3) {
             if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
                 //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.moveRight();
@@ -147,7 +137,7 @@ public class BossFightState extends GameState {
                 //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (175 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 175) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
+                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (200 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 200) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.attack(boss);
                 }
                 else
@@ -155,8 +145,8 @@ public class BossFightState extends GameState {
                     player.gotHit();
                 }
             }
-        }
-        else {
+        //}
+        /*else {
             if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
                 //if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (100 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
                     player.moveRight();
@@ -178,14 +168,14 @@ public class BossFightState extends GameState {
                 //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (175 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 175) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
+                if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (200 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 200) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
                     player.attack(boss);
                 }
                 else{
                     player.gotHit();
                 }
             }
-        }
+        }*/
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             gsm.setGameState(GameStateManager.PAUSEMENU);
         }
