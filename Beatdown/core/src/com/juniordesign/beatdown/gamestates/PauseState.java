@@ -68,7 +68,7 @@ public class PauseState extends GameState {
             if(y == 77)
             {
                 //this will be resume
-                gsm.setGameState(GameStateManager.SIDESCROLL); //currentProgress IK i dont want to dispose current side
+                //gsm.setGameState(GameStateManager.SIDESCROLL); //currentProgress IK i dont want to dispose current side
             }
             else if (y == 44)
             {
