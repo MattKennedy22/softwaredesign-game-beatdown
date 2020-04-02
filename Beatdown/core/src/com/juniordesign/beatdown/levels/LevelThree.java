@@ -9,7 +9,8 @@ public class LevelThree extends Level {
     }
 
     protected void init(){
-        this.levelBoss = "Smore-Sheet.png";
+        difficulty = 3;
+        //this.levelBoss = "Smore-Sheet.png";
         this.levelMap = "HellMap.tmx";
         this.levelMusic = "HellMusic.mp3";
         this.bossMusic = "SmoreMusic.mp3";

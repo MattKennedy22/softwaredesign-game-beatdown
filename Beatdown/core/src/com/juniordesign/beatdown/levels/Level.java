@@ -4,7 +4,7 @@ package com.juniordesign.beatdown.levels;
 import java.util.ArrayList;
 
 public abstract class Level {
-    protected String levelBoss;
+    //protected String levelBoss;
     protected String levelMap;
     protected String levelMusic;
     protected String bossMusic;
@@ -21,9 +21,9 @@ public abstract class Level {
 
     abstract protected void init();
 
-        public String getLevelBoss(){
+    /*public String getLevelBoss(){
         return levelBoss;
-    }
+    }*/
 
     public int getDifficulty() {
         return difficulty;
