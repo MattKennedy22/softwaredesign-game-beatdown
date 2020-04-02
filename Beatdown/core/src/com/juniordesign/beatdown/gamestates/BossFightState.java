@@ -7,6 +7,7 @@ import com.juniordesign.beatdown.entities.DeweyBossFight;
 import com.juniordesign.beatdown.entities.Hud;
 import com.juniordesign.beatdown.entities.bosses.Boss;
 import com.juniordesign.beatdown.entities.DeweySideScroll;
+import com.juniordesign.beatdown.entities.bosses.Devil;
 import com.juniordesign.beatdown.entities.bosses.DudeLove;
 import com.juniordesign.beatdown.entities.bosses.Smore;
 import com.juniordesign.beatdown.levels.Level;
@@ -37,7 +38,6 @@ public class BossFightState extends GameState {
 
         player = new DeweyBossFight();
         player.setPosition(64, 32);
-        //boss = new Smore();
 
         if (level.getDifficulty() == 1) {
             boss = new DudeLove();
@@ -46,9 +46,9 @@ public class BossFightState extends GameState {
         else if (level.getDifficulty() == 2) {
             boss = new Smore();
         }
-        //else if (level.getDifficulty() == 3){
-        //  boss = new Devil();
-        //}
+        else if (level.getDifficulty() == 3){
+          boss = new Devil();
+        }
 
 
         gameHUD = new Hud(player);
