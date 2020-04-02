@@ -94,16 +94,16 @@ public class BossFightState extends GameState {
         batch.end();
     }
     public void handleInput(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.D)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))){
             player.moveRight();
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.A)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))){
             player.moveLeft();
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
             player.jump();
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.S)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
             player.duck();
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){

@@ -44,7 +44,7 @@ public class PauseState extends GameState {
 
     }
     public void handleInput(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
             if(y == 77){
                 select.setPosition(68,y);
             }
@@ -54,7 +54,7 @@ public class PauseState extends GameState {
             }
 
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.S)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
             if(y == 11){
                 select.setPosition(68,y);
             }

@@ -44,7 +44,7 @@ public class LevelSelectState extends GameState {
 
     }
     public void handleInput(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.D)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))){
             if(x > 170){
                 select.setPosition(x,-6);
             }
@@ -54,7 +54,7 @@ public class LevelSelectState extends GameState {
             }
 
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.A)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))){
             if(x < 86){
                 select.setPosition(x,-6);
             }
