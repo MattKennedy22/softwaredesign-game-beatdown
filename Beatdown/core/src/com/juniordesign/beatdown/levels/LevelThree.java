@@ -13,7 +13,8 @@ public class LevelThree extends Level {
         this.levelMap = "HellMap.tmx";
         this.levelMusic = "HellMusic.mp3";
         this.bossMusic = "SmoreMusic.mp3";
-        this.runSpeed = 319.2f;
+        this.runSpeed = 266.795166f;//314.2f;//418.962656
+        this.endOfLevel = 58500;
         this.levelEnemies = new ArrayList<>();
         levelEnemies.add("skeleboy.png");
     }

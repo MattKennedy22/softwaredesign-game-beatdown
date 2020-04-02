@@ -20,7 +20,9 @@ public abstract class MapManager {
     protected MapLayer collideLayer;
     protected MapLayer spawnLayer;
     protected TiledMapTileLayer obstacleLayer;
-    protected int[] decorationLayersIndices;
+    protected TiledMapTileLayer floorLayer;
+    protected TiledMapTileLayer backgroundLayer;
+    //protected int[] decorationLayersIndices;
 
 
     public MapManager(String mapName){
@@ -30,21 +32,30 @@ public abstract class MapManager {
         obstacleLayer = (TiledMapTileLayer) mapLayers.get("Obstacles");
         collideLayer = mapLayers.get("ObstacleObjects");
         spawnLayer = mapLayers.get("EnemySpawns");
+        floorLayer = (TiledMapTileLayer) mapLayers.get("Floor");
+        backgroundLayer = (TiledMapTileLayer) mapLayers.get("Background");
 
-        decorationLayersIndices = new int[] {
+        /*decorationLayersIndices = new int[] {
                 mapLayers.getIndex("Background"),
                 mapLayers.getIndex("Floor")
-        };
+        };*/
     }
 
-    public void render(OrthographicCamera camera){
+    public void render(OrthographicCamera camera, OrthographicCamera hudCamera){
+        // First render background then floor
+        tiledMapRenderer.setView(hudCamera);
+        tiledMapRenderer.getBatch().begin();
+        tiledMapRenderer.renderTileLayer(backgroundLayer);
+        tiledMapRenderer.getBatch().end();
+
         tiledMapRenderer.setView(camera);
         // First render background then floor
-        tiledMapRenderer.render(decorationLayersIndices);
+        //tiledMapRenderer.render(decorationLayersIndices);
 
         // Render obstacle layer of map
         tiledMapRenderer.getBatch().begin();
         tiledMapRenderer.renderTileLayer(obstacleLayer);
+        tiledMapRenderer.renderTileLayer(floorLayer);
         tiledMapRenderer.getBatch().end();
     }
 

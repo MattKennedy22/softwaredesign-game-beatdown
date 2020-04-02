@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.juniordesign.beatdown.entities.DeweyBossFight;
+import com.juniordesign.beatdown.entities.Hud;
 import com.juniordesign.beatdown.entities.bosses.Boss;
 import com.juniordesign.beatdown.entities.DeweySideScroll;
 import com.juniordesign.beatdown.entities.bosses.Smore;
@@ -32,6 +33,7 @@ public class BossFightState extends GameState {
         music.play();
 
         player = new DeweyBossFight();
+        gameHUD = new Hud(player);
         player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);
         boss = new Smore();
@@ -66,7 +68,7 @@ public class BossFightState extends GameState {
     public void draw(){
         //tiledMapRenderer.setView(camera);
         //tiledMapRenderer.render();
-        mapManager.render(camera);
+        mapManager.render(camera,hudCamera);
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
@@ -99,6 +101,7 @@ public class BossFightState extends GameState {
         boss.dispose();
         mapManager.dispose();
         music.dispose();
+        gameHUD.dispose();
         //tiledMap.dispose();
     }
 }

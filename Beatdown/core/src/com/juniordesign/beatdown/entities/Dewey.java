@@ -151,7 +151,7 @@ public abstract class Dewey {
 
     public void gotHit(){
         if(currentState != State.GETTINGHIT) {
-            animationTime = 0;
+            animationTime = 16f/runSpeed; // Fast recovery time
             health--;
             currentState = State.GETTINGHIT;
         }
