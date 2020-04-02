@@ -22,11 +22,13 @@ public class GameStateManager {
     public static final int SIDESCROLL = 2;
     public static final int BOSSFIGHT = 3;
     public static final int HELPMENU = 9;
+    public static final int PAUSEMENU = 8;
+
 
     public GameStateManager(BeatdownGame game){
         this.game = game;
         // side scroll for test , should start at menu in final product
-        setGameState(MENU);
+        setGameState(MENU); //!!!!!
     }
 
     public BeatdownGame getGame() {
@@ -56,6 +58,9 @@ public class GameStateManager {
         }
         if(state == HELPMENU) {
             gameState = new HelpMenuState(this);
+        }
+        if(state == PAUSEMENU){
+            gameState = new PauseState(this);
         }
     }
 

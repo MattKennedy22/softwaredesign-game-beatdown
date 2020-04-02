@@ -10,7 +10,6 @@ public class LevelSelectState extends GameState {
 
     private SelectBar select;
     private LvlSelect background;
-    private Help controls;
 
     int x =24;
 

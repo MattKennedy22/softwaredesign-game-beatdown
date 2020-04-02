@@ -97,6 +97,11 @@ public class SideScrollState extends GameState {
                 player.duck();
             //}
         }
+
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+
+            gsm.setGameState(GameStateManager.PAUSEMENU);
+        }
     }
     public void dispose(){
         player.dispose();

@@ -7,38 +7,38 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-public class SelectBar {
-    Rectangle bottom, left, right, top;
+public class Pause {
 
-    private Sprite selectBarSprite;
-    private Texture selectBar;
+    private Sprite PauseSprite;
+
+    private Texture PauseTexture;
 
 
 
     // Constructor
-    public SelectBar() {
+    public Pause() {
 
-        selectBar = new Texture("underline.png");
-        selectBarSprite = new Sprite(selectBar, 0, 0, 36, 36);
+        PauseTexture = new Texture("PauseMenu.png");
+        PauseSprite = new Sprite(PauseTexture, 0, 0, 256, 144); //1200 x 1008
         this.setPosition(0, 0);
 
     }
 
     public void setPosition(float x, float y) {
 
-        selectBarSprite.setPosition(x, y);
+        PauseSprite.setPosition(x, y);
 
     }
 
     public void draw(SpriteBatch batch) {
 
-        selectBarSprite.draw(batch);
+        PauseSprite.draw(batch);
 
     }
 
     public void dispose() {
 
-        selectBar.dispose();
+        PauseTexture.dispose();
 
     }
 
