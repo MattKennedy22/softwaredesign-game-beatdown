@@ -35,7 +35,7 @@ public abstract class Dewey {
         //this.setPosition(0,0);
 
         currentState = State.IDLE;
-        runSpeed = 175.73799999f; //pixels per second
+        runSpeed = 1f; //pixels per second
         health = 10;
 
         animationTimeEnd = 64f / runSpeed;
@@ -69,6 +69,11 @@ public abstract class Dewey {
 
     public float getAnimationTime(){
         return animationTime;
+    }
+
+    public void setRunSpeed(float speed){
+        runSpeed = speed;
+        animationTimeEnd = 64f / runSpeed;
     }
 
     public void setPosition(float x, float y) {
@@ -146,7 +151,7 @@ public abstract class Dewey {
 
     public void gotHit(){
         if(currentState != State.GETTINGHIT) {
-            animationTime = 0;
+            animationTime = 16f/runSpeed; // Fast recovery time
             health--;
             currentState = State.GETTINGHIT;
         }
