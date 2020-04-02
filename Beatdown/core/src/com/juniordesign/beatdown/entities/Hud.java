@@ -18,7 +18,7 @@ public class Hud {
 
     public void render(SpriteBatch batch){
         currentHealth = String.valueOf(player.getHealth());
-        font.draw(batch, "Health " + currentHealth, 15, 130);
+        font.draw(batch, "Health: " + currentHealth, 15, 130);
     }
 
     public void dispose(){

@@ -40,6 +40,8 @@ public abstract class Boss {
 
     public abstract void doActions(float deltatime);
 
+    protected abstract void init();
+
     public boolean getDead() {
         return dead;
     }

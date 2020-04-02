@@ -17,7 +17,7 @@ public class DudeLove extends Boss {
         this.init();
     }
 
-    private void init(){
+    protected void init(){
         FullHealthAttack = new TextureRegion(texture, 96, 0, 96, 96); //Determine X's
         HalfHealthIdle = new TextureRegion(texture, 192, 0, 96, 96);
         HalfHealthAttack = new TextureRegion(texture, 288, 0, 96, 96);
