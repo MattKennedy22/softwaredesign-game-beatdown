@@ -10,10 +10,12 @@ public class LevelTwo extends Level{
 
     protected void init(){
         difficulty = 2;
-        this.levelBoss = "Smore-Sheet.png";
+        //this.levelBoss = "Smore-Sheet.png";
         this.levelMap = "RooftopTest.tmx";
         this.levelMusic = "cityMusic.mp3";
         this.bossMusic = "SmoreMusic.mp3";
+        this.runSpeed = 175.73799999f;
+        this.endOfLevel = 16000;
         this.levelEnemies = new ArrayList<>();
         levelEnemies.add("2notcello.png");
     }

@@ -16,6 +16,7 @@ public class BeatdownGame extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
+	private OrthographicCamera hudCamera;
 
 	private GameStateManager gsm;
 
@@ -27,6 +28,9 @@ public class BeatdownGame extends ApplicationAdapter {
 	public OrthographicCamera getCamera(){
 		return this.camera;
 	}
+	public OrthographicCamera getHudCamera(){
+		return this.hudCamera;
+	}
 	
 	@Override
 	public void create () {
@@ -37,6 +41,10 @@ public class BeatdownGame extends ApplicationAdapter {
 		camera = new OrthographicCamera(v_width, v_height);
 		camera.setToOrtho(false, v_width, v_height);
 		camera.update();
+		hudCamera = new OrthographicCamera(v_width,v_height);
+		hudCamera.setToOrtho(false,v_width,v_height);
+		hudCamera.update();
+
 
 		gsm = new GameStateManager(this);
 

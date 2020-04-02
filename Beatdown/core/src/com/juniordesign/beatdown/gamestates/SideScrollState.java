@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.juniordesign.beatdown.entities.DeweySideScroll;
 import com.juniordesign.beatdown.entities.Enemy;
+import com.juniordesign.beatdown.entities.Hud;
 import com.juniordesign.beatdown.levels.Level;
 import com.juniordesign.beatdown.managers.GameStateManager;
 import com.juniordesign.beatdown.managers.collisions.SideScrollCollisions;
@@ -19,6 +20,8 @@ public class SideScrollState extends GameState {
     private Music music;
     private double startTime = System.currentTimeMillis();
     private Level level;
+    private int endOfLevel;
+    private int cameraEndOfLevel;
 
 
     public SideScrollState (GameStateManager gsm){
@@ -27,6 +30,8 @@ public class SideScrollState extends GameState {
 
     public void init(){
         level = gsm.getLevel();
+        endOfLevel = level.getEndOfLevel();
+        cameraEndOfLevel = endOfLevel - 256;
         music = Gdx.audio.newMusic(Gdx.files.internal(level.getLevelMusic()));
         music.setLooping(true);
         music.setVolume(0.1f);
@@ -34,6 +39,8 @@ public class SideScrollState extends GameState {
 
 
         player = new DeweySideScroll();
+        gameHUD = new Hud(player);
+        player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);
         enemies = new ArrayList<Enemy>();
         mapManager = new SideScrollMap(level.getLevelMap());
@@ -44,11 +51,11 @@ public class SideScrollState extends GameState {
         //CHANGE THIS (NOT GOOD)
         player.run(deltatime);
         // Move camera with player if player position is not past end of level
-        if(player.getPositionX() < 15744) {
+        if(player.getPositionX() < cameraEndOfLevel) {
             camera.translate(player.getRunSpeed() * deltatime, 0);
         }
         // Once player reaches this x coordinate go to boss fight
-        else if (player.getPositionX() > 16000){
+        else if (player.getPositionX() > endOfLevel){
             gsm.setGameState(GameStateManager.BOSSFIGHT);
         }
         camera.update();
@@ -64,7 +71,13 @@ public class SideScrollState extends GameState {
 
     }
     public void draw(){
-        mapManager.render(camera);
+
+        mapManager.render(camera,hudCamera);
+        // Print HUD
+        batch.setProjectionMatrix(hudCamera.combined);
+        batch.begin();
+        gameHUD.render(batch);
+        batch.end();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
@@ -110,5 +123,6 @@ public class SideScrollState extends GameState {
             enemy.dispose();
         }
         music.dispose();
+        gameHUD.dispose();
     }
 }
