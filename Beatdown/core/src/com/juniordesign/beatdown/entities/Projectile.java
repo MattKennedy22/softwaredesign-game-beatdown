@@ -16,6 +16,14 @@ public class Projectile {
     public Sprite getSprite(){
         return sprite;
     }
+
+    public float getX(){
+        return sprite.getX();
+    }
+
+    public float getY(){
+        return sprite.getY();
+    }
     public void setPosition(float x, float y){
         sprite.setPosition(x,y);
     }

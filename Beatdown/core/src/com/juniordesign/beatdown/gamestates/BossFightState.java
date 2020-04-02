@@ -51,7 +51,7 @@ public class BossFightState extends GameState {
         }
 
 
-        gameHUD = new Hud(player);
+        gameHUD = new Hud(player,level.getDifficulty());
         player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);
         mapManager = new BossFightMap(level.getLevelMap());
@@ -87,10 +87,18 @@ public class BossFightState extends GameState {
         //tiledMapRenderer.render();
         mapManager.render(camera,hudCamera);
 
+
+        //Render Player and Boss
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         player.draw(batch);
         boss.draw(batch);
+        batch.end();
+
+        //Render HUD
+        batch.setProjectionMatrix(hudCamera.combined);
+        batch.begin();
+        gameHUD.render(batch);
         batch.end();
     }
     public void handleInput(){
@@ -108,6 +116,9 @@ public class BossFightState extends GameState {
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
             player.attack(boss);
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+            gsm.setGameState(GameStateManager.PAUSEMENU);
         }
 
     }
