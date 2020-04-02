@@ -30,7 +30,7 @@ public class Smore extends Boss {
 
         projectiles = new ArrayList<>();
 
-        health = 60;
+        health = 60*2;
         animationEnd = 7.5f;
         animationTime = 0;
     }
@@ -39,10 +39,10 @@ public class Smore extends Boss {
     public void doActions(float deltatime){
         if(currentState == State.IDLE){
             animationTime += deltatime;
-            if(health > 40) {
+            if(health > 40*2) {
                 sprite.setRegion(initialTexture);
             }
-            else if (health > 20) {
+            else if (health > 20*2) {
                 sprite.setRegion(yellowIdleTexture);
             }
             else{
@@ -55,10 +55,10 @@ public class Smore extends Boss {
         }
 
         else if(currentState == State.ATTACKING){
-            if (health > 40) {
+            if (health > 40*2) {
                 sprite.setRegion(greenAttackTexture);
                 this.firstAttack(deltatime);
-            } else if (health > 20) {
+            } else if (health > 20*2) {
                 sprite.setRegion(yellowAttackTexture);
                 this.secondAttack(deltatime);
             }
@@ -88,7 +88,7 @@ public class Smore extends Boss {
     public void firstAttack(float deltatime){
         if(animationTime == 0) {
             TextureRegion record = new TextureRegion(projectilesTexture, 64, 0, 32, 32);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 8; i++) {
                 Projectile projec = new Projectile(record, 20, 20);
                 projec.setPosition(300 + (i * 200), 32);
                 projectiles.add(projec);
@@ -96,7 +96,7 @@ public class Smore extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*190)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
             }
         }
     }
@@ -104,7 +104,7 @@ public class Smore extends Boss {
     public void secondAttack(float deltatime){
         if(animationTime == 0) {
             TextureRegion record = new TextureRegion(projectilesTexture, 96, 0, 32, 32);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 8; i++) {
                 Projectile projec = new Projectile(record,20,20);
                 projec.setPosition(400 + (i * 200), 48);
                 projectiles.add(projec);
@@ -112,7 +112,7 @@ public class Smore extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*190)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
             }
         }
     }
@@ -140,7 +140,7 @@ public class Smore extends Boss {
         //After all projectiles are spawned
         else{
             for(Projectile projectile : projectiles){
-                projectile.translateY(-(deltatime*190)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateY(-(deltatime*240)); // MAKE THIS THE SAME AS RUNSPEED
             }
         }
     }

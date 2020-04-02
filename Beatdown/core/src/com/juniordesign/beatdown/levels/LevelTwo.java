@@ -10,6 +10,7 @@ public class LevelTwo extends Level{
 
     protected void init(){
         difficulty = 2;
+        levelBPMS = 444.4;
         //this.levelBoss = "Smore-Sheet.png";
         this.levelMap = "RooftopTest.tmx";
         this.levelMusic = "cityMusic.mp3";

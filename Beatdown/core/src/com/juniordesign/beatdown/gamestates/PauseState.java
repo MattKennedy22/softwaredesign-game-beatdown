@@ -3,18 +3,26 @@ package com.juniordesign.beatdown.gamestates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.juniordesign.beatdown.entities.*;
+import com.juniordesign.beatdown.entities.bosses.Boss;
 import com.juniordesign.beatdown.managers.GameStateManager;
+import com.juniordesign.beatdown.managers.maps.MapManager;
+
+import java.util.ArrayList;
 
 public class PauseState extends GameState {
 
     private PauseSelBar select;
     private Pause pause;
+    private GameState currentState;
+
 
     int y = 77; //for select bar movements Value TBD
 
-    public PauseState(GameStateManager gsm){
-        super(gsm);
+   public PauseState(GameStateManager gsm){
+       super(gsm);
+       this.currentState = currentState;
     }
 
     public void init(){
@@ -44,7 +52,7 @@ public class PauseState extends GameState {
 
     }
     public void handleInput(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
             if(y == 77){
                 select.setPosition(68,y);
             }
@@ -54,7 +62,7 @@ public class PauseState extends GameState {
             }
 
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.S)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
             if(y == 11){
                 select.setPosition(68,y);
             }
@@ -67,8 +75,7 @@ public class PauseState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(y == 77)
             {
-                //this will be resume
-                //gsm.setGameState(GameStateManager.SIDESCROLL); //currentProgress IK i dont want to dispose current side
+
             }
             else if (y == 44)
             {

@@ -18,7 +18,6 @@ public class SideScrollState extends GameState {
     private DeweySideScroll player;
     private ArrayList<Enemy> enemies;
     private Music music;
-    private double startTime = System.currentTimeMillis();
     private Level level;
     private int endOfLevel;
     private int cameraEndOfLevel;
@@ -96,7 +95,7 @@ public class SideScrollState extends GameState {
                 player.attack(enemies);
             //}
         }
-        else if(Gdx.input.isKeyJustPressed(Input.Keys.W)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
             //if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
             //{
                 if(player.getAnimationTime() == 0) {
@@ -104,7 +103,7 @@ public class SideScrollState extends GameState {
                 }
             //}
         }
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
             //if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
             //{
                 player.duck();
