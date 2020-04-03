@@ -17,7 +17,6 @@ public class SideScrollState extends GameState {
 
     private DeweySideScroll player;
     private ArrayList<Enemy> enemies;
-    private Music music;
     private Level level;
     private int endOfLevel;
     private int cameraEndOfLevel;
@@ -45,7 +44,11 @@ public class SideScrollState extends GameState {
         mapManager = new SideScrollMap(level.getLevelMap());
         mapManager.spawnEnemies(enemies, level.getLevelEnemies());
         collisionManager = new SideScrollCollisions(mapManager.getCollideLayer(), player);
+
+        camera.setToOrtho(false, 256, 144);
+        camera.update();
     }
+
     public void update(float deltatime){
         //CHANGE THIS (NOT GOOD)
         player.run(deltatime);
@@ -113,6 +116,7 @@ public class SideScrollState extends GameState {
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
 
             gsm.setGameState(GameStateManager.PAUSEMENU);
+            music.pause();
         }
 
         //TEMP FOR TESTING

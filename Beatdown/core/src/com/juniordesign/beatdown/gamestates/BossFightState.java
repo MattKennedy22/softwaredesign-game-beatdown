@@ -21,7 +21,6 @@ public class BossFightState extends GameState {
 
     private DeweyBossFight player;
     private Boss boss;
-    private Music music;
     private Level level;
     private double BPMS;
 
@@ -54,10 +53,8 @@ public class BossFightState extends GameState {
             boss = new Smore();
         }
         else if (level.getDifficulty() == 3){
-          boss = new DudeLove(); //PLACE HOLDER
+            boss = new Devil();
         }
-
-
 
         gameHUD = new Hud(player,level.getDifficulty());
         player.setRunSpeed(level.getRunSpeed());
@@ -68,6 +65,8 @@ public class BossFightState extends GameState {
         camera.setToOrtho(false, 256, 144);
         camera.update();
     }
+
+
     public void update(float deltatime){
         //CHANGE THIS
         camera.update();
@@ -137,7 +136,7 @@ public class BossFightState extends GameState {
                 //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (200 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 200) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
+                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (250 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 250) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.attack(boss);
                 }
                 else
@@ -178,6 +177,7 @@ public class BossFightState extends GameState {
         }*/
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             gsm.setGameState(GameStateManager.PAUSEMENU);
+            music.pause();
         }
 
 

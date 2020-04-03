@@ -84,7 +84,7 @@ public class Devil extends Boss {
                     wall.setPosition(64,256 + (i*32));
                     projectiles.add(wall);
                 }
-                else if ((i >= 66 && i < 77) || (i >= 107 && i < 119) || (i >= 142 && i < 153)){
+                else if ((i >= 66 && i < 77) || (i >= 107 && i < 119) || (i >= 142)){
                     Projectile wall = new Projectile(lavaWall,32,32);
                     Projectile wall2 = new Projectile(lavaWall,32,32);
                     wall.setPosition(0,256 + (i*32));

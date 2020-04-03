@@ -1,5 +1,6 @@
 package com.juniordesign.beatdown.gamestates;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.juniordesign.beatdown.BeatdownGame;
@@ -23,6 +24,8 @@ public abstract class GameState {
     protected CollisionManager collisionManager;
     protected Hud gameHUD;
 
+    protected Music music;
+
     protected GameState(GameStateManager gsm){
         this.gsm = gsm;
         game = gsm.getGame();
@@ -31,6 +34,10 @@ public abstract class GameState {
         hudCamera = game.getHudCamera();
 
         init();
+    }
+
+    public Music getMusic(){
+        return music;
     }
 
     public abstract void init();

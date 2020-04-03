@@ -13,6 +13,7 @@ public class GameStateManager {
 
     // Current game state
     private GameState gameState;
+    private GameState pausedState;
 
     // Current Level
     private Level level;
@@ -42,8 +43,15 @@ public class GameStateManager {
     }
 
     public void setGameState(int state){
-        if(gameState != null){
+        if(state == PAUSEMENU){
+            pausedState = this.gameState;
+            gameState = new PauseState(this);
+        }
+        else if(gameState != null){
             gameState.dispose();
+            if(pausedState != null){
+                pausedState.dispose();
+            }
         }
         if(state == MENU) {
             gameState = new MenuState(this);
@@ -61,12 +69,15 @@ public class GameStateManager {
         if(state == HELPMENU) {
             gameState = new HelpMenuState(this);
         }
-        if(state == PAUSEMENU){
-            gameState = new PauseState(this);
-        }
         if (state == GAMEOVERMENU) {
             gameState = new GameOverState(this);
         }
+    }
+
+    public void unpause(){
+        gameState.dispose();
+        pausedState.getMusic().play();
+        gameState = pausedState;
     }
 
     public void setLevel(int levelNum){

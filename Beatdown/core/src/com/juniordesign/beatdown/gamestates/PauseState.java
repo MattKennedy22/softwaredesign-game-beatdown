@@ -3,6 +3,7 @@ package com.juniordesign.beatdown.gamestates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.juniordesign.beatdown.entities.*;
 import com.juniordesign.beatdown.entities.bosses.Boss;
@@ -15,14 +16,12 @@ public class PauseState extends GameState {
 
     private PauseSelBar select;
     private Pause pause;
-    private GameState currentState;
 
 
     int y = 77; //for select bar movements Value TBD
 
    public PauseState(GameStateManager gsm){
        super(gsm);
-       this.currentState = currentState;
     }
 
     public void init(){
@@ -33,17 +32,13 @@ public class PauseState extends GameState {
         select = new PauseSelBar();
         select.setPosition(68,77);
 
-
-        camera.setToOrtho(false, 256, 144);
-        camera.update();
-
     }
     public void update(float deltatime){
         handleInput();
     }
     public void draw(){
 
-        batch.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(hudCamera.combined);
 
         batch.begin();
         pause.draw(batch);
@@ -75,7 +70,7 @@ public class PauseState extends GameState {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(y == 77)
             {
-
+                gsm.unpause();
             }
             else if (y == 44)
             {
