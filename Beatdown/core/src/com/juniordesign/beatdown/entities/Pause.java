@@ -13,33 +13,23 @@ public class Pause {
 
     private Texture PauseTexture;
 
-
-
     // Constructor
     public Pause() {
-
         PauseTexture = new Texture("PauseMenu.png");
         PauseSprite = new Sprite(PauseTexture, 0, 0, 256, 144); //1200 x 1008
         this.setPosition(0, 0);
-
     }
 
     public void setPosition(float x, float y) {
-
         PauseSprite.setPosition(x, y);
-
     }
 
     public void draw(SpriteBatch batch) {
-
         PauseSprite.draw(batch);
-
     }
 
     public void dispose() {
-
         PauseTexture.dispose();
-
     }
 
 }

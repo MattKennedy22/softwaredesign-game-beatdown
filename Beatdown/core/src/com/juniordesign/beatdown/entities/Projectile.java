@@ -24,6 +24,7 @@ public class Projectile {
     public float getY(){
         return sprite.getY();
     }
+
     public void setPosition(float x, float y){
         sprite.setPosition(x,y);
     }

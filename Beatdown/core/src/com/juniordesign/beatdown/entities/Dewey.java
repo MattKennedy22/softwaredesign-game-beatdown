@@ -25,11 +25,6 @@ public abstract class Dewey {
 
     // Constructor
     public Dewey() {
-        /*texture = new Texture("GuitarDewey.png");
-        idleTexture = new TextureRegion(texture,0,0,32,32);
-        attackTexture = new TextureRegion(texture,96,0,32,32);
-
-        sprite = new Sprite(idleTexture, 0, 0, 32, 32);*/
         normalHitbox = new Rectangle(0,0, 16, 16);
         frontHitbox = new Rectangle(0, 0, 32, 32);
         //this.setPosition(0,0);

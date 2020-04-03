@@ -15,28 +15,21 @@ public class PauseSelBar {
 
     // Constructor
     public PauseSelBar() {
-
         BlackSelectBar = new Texture("BlackSelectBar.png");
         BlackSelectBarSprite = new Sprite(BlackSelectBar,0,0,127,4);
         this.setPosition(0,0);
     }
 
     public void setPosition(float x, float y) {
-
         BlackSelectBarSprite.setPosition(x, y);
-
     }
 
     public void draw(SpriteBatch batch) {
-
         BlackSelectBarSprite.draw(batch);
-
     }
 
     public void dispose() {
-
         BlackSelectBar.dispose();
-
     }
 
 }
