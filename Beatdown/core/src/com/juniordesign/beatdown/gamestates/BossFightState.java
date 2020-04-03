@@ -70,7 +70,7 @@ public class BossFightState extends GameState {
     public void update(float deltatime){
         //CHANGE THIS
         camera.update();
-        handleInput();
+        //handleInput();
         player.checkActions(deltatime);
         boss.doActions(deltatime);
 
@@ -89,6 +89,8 @@ public class BossFightState extends GameState {
         if(boss.getDead()){
             gsm.setGameState(GameStateManager.LEVELSELECT);
         }
+
+        handleInput();
     }
     public void draw(){
         //tiledMapRenderer.setView(camera);
@@ -110,10 +112,7 @@ public class BossFightState extends GameState {
         batch.end();
     }
     public void handleInput(){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
 
-            gsm.setGameState(GameStateManager.PAUSEMENU);
-        }
         //if(level.getDifficulty() == 2 || level.getDifficulty() == 3) {
             if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
                 //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
@@ -176,8 +175,8 @@ public class BossFightState extends GameState {
             }
         }*/
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
-            gsm.setGameState(GameStateManager.PAUSEMENU);
             music.pause();
+            gsm.pause();
         }
 
 

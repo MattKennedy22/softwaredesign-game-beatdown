@@ -114,9 +114,8 @@ public class SideScrollState extends GameState {
         }
 
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
-
-            gsm.setGameState(GameStateManager.PAUSEMENU);
             music.pause();
+            gsm.pause();
         }
 
         //TEMP FOR TESTING
