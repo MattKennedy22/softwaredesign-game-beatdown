@@ -36,8 +36,10 @@ public abstract class GameState {
         init();
     }
 
-    public Music getMusic(){
-        return music;
+    public void unpaused(){
+        if(music != null){
+            music.play();
+        }
     }
 
     public abstract void init();
