@@ -29,7 +29,7 @@ public class DudeLove extends Boss {
 
         projectiles = new ArrayList<>();
 
-        health = 60;
+        health = 3;
         animationEnd = 7.5f;
         animationTime = 0;
     }
@@ -38,10 +38,10 @@ public class DudeLove extends Boss {
     public void doActions(float deltatime){
         if(currentState == State.IDLE){
             animationTime += deltatime;
-            if(health > 45) {
+            if(health > 2) {
                 sprite.setRegion(initialTexture);
             }
-            else if (health > 30) {
+            else if (health > 1) {
                 sprite.setRegion(HalfHealthIdle);
             }
             else{
@@ -54,10 +54,10 @@ public class DudeLove extends Boss {
         }
 
         else if(currentState == State.ATTACKING){
-            if (health > 45) {
+            if (health > 2) {
                 sprite.setRegion(FullHealthAttack);
                 this.firstAttack(deltatime);
-            } else if (health > 30) {
+            } else if (health > 1) {
                 sprite.setRegion(HalfHealthAttack);
                 this.secondAttack(deltatime);
             }

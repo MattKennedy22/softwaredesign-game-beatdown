@@ -36,7 +36,7 @@ public abstract class Dewey {
 
         currentState = State.IDLE;
         runSpeed = 1f; //pixels per second
-        health = 1000;
+        health = 10;
 
         animationTimeEnd = 64f / runSpeed;
         animationTime = 0;
