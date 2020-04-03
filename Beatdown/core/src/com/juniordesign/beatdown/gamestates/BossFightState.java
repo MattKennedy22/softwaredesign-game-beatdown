@@ -147,7 +147,7 @@ public class BossFightState extends GameState {
                 //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (150 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 150) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
+                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (300 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 300) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.attack(boss);
                 }
                 else
@@ -178,7 +178,7 @@ public class BossFightState extends GameState {
                 //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (150 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 150) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
+                if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (300 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 300) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
                     player.attack(boss);
                 }
                 else{
