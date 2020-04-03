@@ -43,15 +43,8 @@ public class GameStateManager {
     }
 
     public void setGameState(int state){
-        if(state == PAUSEMENU){
-            pausedState = this.gameState;
-            gameState = new PauseState(this);
-        }
-        else if(gameState != null){
+        if(gameState != null){
             gameState.dispose();
-            if(pausedState != null){
-                pausedState.dispose();
-            }
         }
         if(state == MENU) {
             gameState = new MenuState(this);
@@ -74,10 +67,14 @@ public class GameStateManager {
         }
     }
 
+    public void pause(){
+        pausedState = gameState;
+        gameState = new PauseState(this);
+    }
     public void unpause(){
         gameState.dispose();
-        pausedState.getMusic().play();
         gameState = pausedState;
+        gameState.unpaused();
     }
 
     public void setLevel(int levelNum){
