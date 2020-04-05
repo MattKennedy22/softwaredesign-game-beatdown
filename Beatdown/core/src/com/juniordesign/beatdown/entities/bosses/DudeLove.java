@@ -41,7 +41,7 @@ public class DudeLove extends Boss {
             if(health > 44) {
                 sprite.setRegion(initialTexture);
             }
-            else if (health > 1) {
+            else if (health > 29) {
                 sprite.setRegion(HalfHealthIdle);
             }
             else{
@@ -54,10 +54,10 @@ public class DudeLove extends Boss {
         }
 
         else if(currentState == State.ATTACKING){
-            if (health > 29) {
+            if (health > 44) {
                 sprite.setRegion(FullHealthAttack);
                 this.firstAttack(deltatime);
-            } else if (health > 1) {
+            } else if (health > 29) {
                 sprite.setRegion(HalfHealthAttack);
                 this.secondAttack(deltatime);
             }
