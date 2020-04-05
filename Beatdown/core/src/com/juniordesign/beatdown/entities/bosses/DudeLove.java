@@ -29,7 +29,7 @@ public class DudeLove extends Boss {
 
         projectiles = new ArrayList<>();
 
-        health = 3;
+        health = 60;
         animationEnd = 7.5f;
         animationTime = 0;
     }
@@ -38,7 +38,7 @@ public class DudeLove extends Boss {
     public void doActions(float deltatime){
         if(currentState == State.IDLE){
             animationTime += deltatime;
-            if(health > 2) {
+            if(health > 44) {
                 sprite.setRegion(initialTexture);
             }
             else if (health > 1) {
@@ -54,7 +54,7 @@ public class DudeLove extends Boss {
         }
 
         else if(currentState == State.ATTACKING){
-            if (health > 2) {
+            if (health > 29) {
                 sprite.setRegion(FullHealthAttack);
                 this.firstAttack(deltatime);
             } else if (health > 1) {

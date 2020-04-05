@@ -10,7 +10,7 @@ public class LevelOne extends Level {
 
     protected void init(){
         this.difficulty = 1;
-        this.levelMSpB = 631.3777403;
+        this.levelMSpB = 631.3777403*2;
         this.bossStartTime = 308;
         this.levelMap = "StageLevel.tmx";
         this.levelMusic = "L2SideScroll.mp3";
