@@ -37,6 +37,9 @@ public class SideScrollState extends GameState {
 
 
         player = new DeweySideScroll();
+        if(gsm.getPlayerHealthCheat()){
+            player.setHealth(666);
+        }
         gameHUD = new Hud(player);
         player.setRunSpeed(level.getRunSpeed());
         player.setPosition(64,32);

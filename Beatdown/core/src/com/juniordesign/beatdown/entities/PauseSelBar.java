@@ -7,29 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-public class PauseSelBar {
-
-    private Sprite BlackSelectBarSprite;
-
-    private Texture BlackSelectBar;
+public class PauseSelBar extends Entity{
 
     // Constructor
     public PauseSelBar() {
-        BlackSelectBar = new Texture("BlackSelectBar.png");
-        BlackSelectBarSprite = new Sprite(BlackSelectBar,0,0,127,4);
-        this.setPosition(0,0);
-    }
-
-    public void setPosition(float x, float y) {
-        BlackSelectBarSprite.setPosition(x, y);
-    }
-
-    public void draw(SpriteBatch batch) {
-        BlackSelectBarSprite.draw(batch);
-    }
-
-    public void dispose() {
-        BlackSelectBar.dispose();
+        super("BlackSelectBar.png",127,4);
     }
 
 }
