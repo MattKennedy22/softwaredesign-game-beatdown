@@ -112,11 +112,7 @@ public class SideScrollState extends GameState {
             music.pause();
             gsm.pause();
         }
-
-        //TEMP FOR TESTING
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-            gsm.setGameState(GameStateManager.BOSSFIGHT);
-        }
+        
     }
 
     public void dispose(){
