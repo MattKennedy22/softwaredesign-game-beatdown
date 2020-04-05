@@ -42,6 +42,9 @@ public class BossFightState extends GameState {
         music.play();
 
         player = new DeweyBossFight();
+        if(gsm.getPlayerHealthCheat()){
+            player.setHealth(666);
+        }
         player.setPosition(64, 32);
 
         msPerBeat = level.getLevelMSpB();
@@ -81,7 +84,7 @@ public class BossFightState extends GameState {
         collisionManager.checkCollisions(deltatime, null);
 
         if(player.getHealth() <= 0){
-            gsm.setGameState(GameStateManager.MENU);
+            gsm.setGameState(GameStateManager.GAMEOVERMENU);
         }
 
         if(boss.getHealth() <= 0){

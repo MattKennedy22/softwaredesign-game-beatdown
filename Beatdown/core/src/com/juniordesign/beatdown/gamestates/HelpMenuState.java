@@ -45,6 +45,10 @@ public class HelpMenuState extends GameState {
         if((Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) || (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) || (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))){
             gsm.setGameState(GameStateManager.MENU);
         }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.L)){
+            gsm.healthCheat();
+        }
     }
     public void dispose(){
         controls.dispose();

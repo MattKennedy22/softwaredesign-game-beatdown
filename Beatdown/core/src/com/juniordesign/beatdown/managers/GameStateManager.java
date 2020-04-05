@@ -20,6 +20,8 @@ public class GameStateManager {
 
     private BeatdownGame game;
 
+    private boolean playerHealthCheat;
+
     public static final int MENU = 0;
     public static final int LEVELSELECT = 1;
     public static final int SIDESCROLL = 2;
@@ -29,6 +31,7 @@ public class GameStateManager {
     public static final int GAMEOVERMENU = 7;
 
     public GameStateManager(BeatdownGame game){
+        this.playerHealthCheat = false;
         this.game = game;
         setGameState(MENU);
     }
@@ -39,6 +42,14 @@ public class GameStateManager {
 
     public Level getLevel(){
         return level;
+    }
+
+    public boolean getPlayerHealthCheat() {
+        return playerHealthCheat;
+    }
+
+    public void healthCheat(){
+        playerHealthCheat = true;
     }
 
     public void setGameState(int state){
