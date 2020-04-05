@@ -1,4 +1,4 @@
-/*package com.juniordesign.beatdown.gamestates;
+package com.juniordesign.beatdown.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -113,33 +113,31 @@ public class BossFightState extends GameState {
     }
     public void handleInput(){
 
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
-                    player.moveRight();
+        if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
+            player.moveRight();
+        }
+        if ((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))) {
+            player.moveLeft();
+        }
+        if ((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
+            player.jump();
+        }
+        if ((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))) {
+            player.duck();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            if ((0 <= (time % msPerBeat) && (125 >= (time % msPerBeat))) || (((msPerBeat - 125) <= (time % msPerBeat)) && (msPerBeat >= (time % msPerBeat)))) {
+                player.attack(boss);
             }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))) {
-                    player.moveLeft();
+            else {
+                player.gotHit();
             }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
-                    player.jump();
-            }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))) {
-                    player.duck();
-            }
-            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if ((0 <= (time % msPerBeat) && (120 >= (time % msPerBeat))) || (((msPerBeat - 120) <= (time % msPerBeat)) && (msPerBeat >= (time % msPerBeat)))) {
-                    player.attack(boss);
-                }
-                else
-                {
-                    player.gotHit();
-                }
-            }
+        }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             music.pause();
             gsm.pause();
         }
-
 
     }
     public void dispose(){
