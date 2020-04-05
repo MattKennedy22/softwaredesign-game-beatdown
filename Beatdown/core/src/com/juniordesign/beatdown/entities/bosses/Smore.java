@@ -11,7 +11,6 @@ import java.util.Random;
 public class Smore extends Boss {
 
     private TextureRegion yellowIdleTexture, redIdleTexture, greenAttackTexture, yellowAttackTexture, redAttackTexture, deadTexture;
-    //private Texture projectilesTexture;
 
     public Smore(){
         super("Smore-Sheet.png");
@@ -96,7 +95,7 @@ public class Smore extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300));
             }
         }
     }
@@ -112,7 +111,7 @@ public class Smore extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300));
             }
         }
     }
@@ -140,7 +139,7 @@ public class Smore extends Boss {
         //After all projectiles are spawned
         else{
             for(Projectile projectile : projectiles){
-                projectile.translateY(-(deltatime*240)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateY(-(deltatime*240));
             }
         }
     }

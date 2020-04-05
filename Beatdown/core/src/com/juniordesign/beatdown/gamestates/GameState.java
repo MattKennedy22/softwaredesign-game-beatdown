@@ -18,8 +18,6 @@ public abstract class GameState {
     protected OrthographicCamera camera;
     protected OrthographicCamera hudCamera;
 
-    //protected TiledMap tiledMap;
-    //protected TiledMapRenderer tiledMapRenderer;
     protected MapManager mapManager;
     protected CollisionManager collisionManager;
     protected Hud gameHUD;

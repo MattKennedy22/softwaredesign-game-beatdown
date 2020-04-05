@@ -53,10 +53,6 @@ public abstract class Boss {
         return sprite;
     }
 
-    public Rectangle getHitbox(){
-        return hitbox;
-    }
-
     public int getHealth() {
         return health;
     }

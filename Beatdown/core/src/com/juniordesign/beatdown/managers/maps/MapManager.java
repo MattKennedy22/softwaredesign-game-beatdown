@@ -22,9 +22,9 @@ public abstract class MapManager {
     protected TiledMapTileLayer obstacleLayer;
     protected TiledMapTileLayer floorLayer;
     protected TiledMapTileLayer backgroundLayer;
-    //protected int[] decorationLayersIndices;
 
     public MapManager(String mapName){
+
         tiledMap = new TmxMapLoader().load(mapName);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         MapLayers mapLayers = tiledMap.getLayers();
@@ -33,11 +33,6 @@ public abstract class MapManager {
         spawnLayer = mapLayers.get("EnemySpawns");
         floorLayer = (TiledMapTileLayer) mapLayers.get("Floor");
         backgroundLayer = (TiledMapTileLayer) mapLayers.get("Background");
-
-        /*decorationLayersIndices = new int[] {
-                mapLayers.getIndex("Background"),
-                mapLayers.getIndex("Floor")
-        };*/
     }
 
     public void render(OrthographicCamera camera, OrthographicCamera hudCamera){
@@ -48,8 +43,6 @@ public abstract class MapManager {
         tiledMapRenderer.getBatch().end();
 
         tiledMapRenderer.setView(camera);
-        // First render background then floor
-        //tiledMapRenderer.render(decorationLayersIndices);
 
         // Render obstacle layer of map
         tiledMapRenderer.getBatch().begin();
@@ -59,8 +52,6 @@ public abstract class MapManager {
     }
 
     abstract public MapLayer getCollideLayer();
-
-    abstract public MapLayer getSpawnLayer();
 
     abstract public void spawnEnemies(ArrayList<Enemy> enemies,  ArrayList<String> enemyFileNames);
 

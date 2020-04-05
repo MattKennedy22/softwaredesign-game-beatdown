@@ -27,7 +27,6 @@ public abstract class Dewey {
     public Dewey() {
         normalHitbox = new Rectangle(0,0, 16, 16);
         frontHitbox = new Rectangle(0, 0, 32, 32);
-        //this.setPosition(0,0);
 
         currentState = State.IDLE;
         runSpeed = 1f; //pixels per second
@@ -44,10 +43,6 @@ public abstract class Dewey {
 
     public float getPositionX(){
         return sprite.getX();
-    }
-
-    public Rectangle getFrontHitbox(){
-        return frontHitbox;
     }
 
     public Rectangle getNormalHitbox(){

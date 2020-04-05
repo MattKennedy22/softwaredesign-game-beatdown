@@ -37,7 +37,6 @@ public class GameOverState extends GameState {
     }
     public void handleInput() {
 
-        // JUST TEST TO SWITCH STATES
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             gsm.setGameState(GameStateManager.MENU);
         }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Projectile {
+
     private Sprite sprite;
 
     public Projectile(TextureRegion textureRegion, int width, int height ){

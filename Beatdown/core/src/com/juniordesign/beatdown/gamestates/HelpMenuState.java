@@ -9,7 +9,6 @@ import com.juniordesign.beatdown.managers.GameStateManager;
 public class HelpMenuState extends GameState {
 
     private SelectBar select;
-    //private Background background;
     private Help controls;
 
     public HelpMenuState(GameStateManager gsm){
@@ -43,7 +42,6 @@ public class HelpMenuState extends GameState {
     }
     public void handleInput(){
 
-        // JUST TEST TO SWITCH STATES
         if((Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) || (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) || (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))){
             gsm.setGameState(GameStateManager.MENU);
         }

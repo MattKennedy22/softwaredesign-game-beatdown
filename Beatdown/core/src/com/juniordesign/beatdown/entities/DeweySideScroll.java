@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class DeweySideScroll extends Dewey{
 
-
     // Constructor
     public DeweySideScroll() {
         super();
@@ -28,7 +27,7 @@ public class DeweySideScroll extends Dewey{
     }
 
     public void run(float deltatime) {
-        // Move player 192 pixels per second
+        // Move player at certain pixels per second
         sprite.translateX(runSpeed*deltatime);
         frontHitbox.setPosition(sprite.getX()+32f,sprite.getY());
         normalHitbox.setPosition(sprite.getX(),sprite.getY()+8f);

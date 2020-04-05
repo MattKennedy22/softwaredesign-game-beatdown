@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Help {
-    Rectangle bottom, left, right, top;
 
     private Sprite HelpSprite;
 
