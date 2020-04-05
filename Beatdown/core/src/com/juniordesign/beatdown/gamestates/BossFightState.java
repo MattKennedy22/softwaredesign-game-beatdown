@@ -126,7 +126,7 @@ public class BossFightState extends GameState {
             player.duck();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            if ((0 <= (time % msPerBeat) && (125 >= (time % msPerBeat))) || (((msPerBeat - 125) <= (time % msPerBeat)) && (msPerBeat >= (time % msPerBeat)))) {
+            if ((0 <= (time % msPerBeat) && (150 >= (time % msPerBeat))) || (((msPerBeat - 150) <= (time % msPerBeat)) && (msPerBeat >= (time % msPerBeat)))) {
                 player.attack(boss);
             }
             else {
