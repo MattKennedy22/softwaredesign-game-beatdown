@@ -61,6 +61,10 @@ public abstract class Dewey {
         return animationTime;
     }
 
+    public void setHealth(int health){
+        this.health = health;
+    }
+
     public void setRunSpeed(float speed){
         runSpeed = speed;
         animationTimeEnd = 64f / runSpeed;
