@@ -13,8 +13,6 @@ public class LvlSelect {
 
     private Texture background;
 
-
-
     // Constructor
     public LvlSelect() {
 

@@ -30,8 +30,7 @@ public class GameStateManager {
 
     public GameStateManager(BeatdownGame game){
         this.game = game;
-        // side scroll for test , should start at menu in final product
-        setGameState(MENU); //!!!!!
+        setGameState(MENU);
     }
 
     public BeatdownGame getGame() {
@@ -56,7 +55,6 @@ public class GameStateManager {
             gameState = new SideScrollState(this);
         }
         if(state == BOSSFIGHT) {
-            // switch to bossfight
             gameState = new BossFightState(this);
         }
         if(state == HELPMENU) {

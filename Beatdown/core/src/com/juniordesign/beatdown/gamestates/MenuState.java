@@ -10,9 +10,8 @@ public class MenuState extends GameState {
 
     private SelectBar select;
     private Background background;
-    private Help controls;
 
-    int x =24;
+    private int positionX;
 
     public MenuState(GameStateManager gsm){
         super(gsm);
@@ -28,6 +27,8 @@ public class MenuState extends GameState {
 
         camera.setToOrtho(false, 256, 144);
         camera.update();
+
+        positionX = 24;
 
     }
     public void update(float deltatime){
@@ -46,41 +47,33 @@ public class MenuState extends GameState {
     }
     public void handleInput(){
         if((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))){
-            if(x > 170){
-                select.setPosition(x,-6);
+            if(positionX <= 170){
+                positionX = positionX + 86;
             }
-            else {
-                x=x+86;
-                select.setPosition(x,-6);
-            }
-
+            select.setPosition(positionX,-6);
         }
         if((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))){
-            if(x < 86){
-                select.setPosition(x,-6);
+            if(positionX >= 86){
+                positionX = positionX - 86;
             }
-            else {
-                x = x - 86;
-                select.setPosition(x,-6);
-            }
+            select.setPosition(positionX,-6);
         }
-        // JUST TEST TO SWITCH STATES
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-            if(x == 24)
+            if(positionX == 24)
             {
-                gsm.setGameState(GameStateManager.LEVELSELECT); //starts level select but if we select 2 for this then we can jump
-                                    // right into side scroller for first iteration demo
+                gsm.setGameState(GameStateManager.LEVELSELECT);
             }
-            else if (x == 110)
+            else if (positionX == 110)
             {
                 gsm.setGameState(GameStateManager.HELPMENU);
             }
-            else if (x==196)
+            else if (positionX == 196)
             {
                 Gdx.app.exit();
             }
         }
     }
+
     public void dispose(){
         background.dispose();
         select.dispose();

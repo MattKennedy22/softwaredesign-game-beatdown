@@ -9,10 +9,10 @@ public class LevelOne extends Level {
     }
 
     protected void init(){
-        difficulty = 1;
-        levelBPMS = 1262.9;
-        //this.levelBoss = "FinalStageBossSheet.png";
-        this.levelMap = "StageLevel.tmx"; //temp
+        this.difficulty = 1;
+        this.levelMSpB = 631.3777403;
+        this.bossStartTime = 308;
+        this.levelMap = "StageLevel.tmx";
         this.levelMusic = "L2SideScroll.mp3";
         this.bossMusic = "L2BossBattle.mp3";
         this.levelEnemies = new ArrayList<>();

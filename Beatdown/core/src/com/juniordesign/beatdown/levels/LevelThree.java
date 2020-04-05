@@ -9,13 +9,13 @@ public class LevelThree extends Level {
     }
 
     protected void init(){
-        difficulty = 3;
-        levelBPMS = 300.3;
-        //this.levelBoss = "Smore-Sheet.png";
+        this.difficulty = 3;
+        this.levelMSpB = 300;
+        this.bossStartTime = 0;
         this.levelMap = "HellMap.tmx";
         this.levelMusic = "HellMusic.mp3";
         this.bossMusic = "DevilMusic.mp3";
-        this.runSpeed = 266.580166f;//314.2f;//418.962656
+        this.runSpeed = 266.580166f;
         this.endOfLevel = 58500;
         this.levelEnemies = new ArrayList<>();
         levelEnemies.add("skeleboy.png");

@@ -13,8 +13,6 @@ public class Pause {
 
     private Texture PauseTexture;
 
-
-
     // Constructor
     public Pause() {
 

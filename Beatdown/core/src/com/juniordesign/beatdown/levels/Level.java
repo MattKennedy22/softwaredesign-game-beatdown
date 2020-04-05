@@ -4,7 +4,7 @@ package com.juniordesign.beatdown.levels;
 import java.util.ArrayList;
 
 public abstract class Level {
-    //protected String levelBoss;
+
     protected String levelMap;
     protected String levelMusic;
     protected String bossMusic;
@@ -13,7 +13,8 @@ public abstract class Level {
     protected ArrayList<String> levelEnemies;
 
     protected int difficulty;
-    protected double levelBPMS;
+    protected double levelMSpB;
+    protected double bossStartTime;
 
 
     public Level(){
@@ -22,12 +23,12 @@ public abstract class Level {
 
     abstract protected void init();
 
-    /*public String getLevelBoss(){
-        return levelBoss;
-    }*/
+    public double getBossStartTime() {
+        return bossStartTime;
+    }
 
-    public double getBPMS(){
-        return levelBPMS;
+    public double getLevelMSpB(){
+        return levelMSpB;
     }
 
     public int getDifficulty() {

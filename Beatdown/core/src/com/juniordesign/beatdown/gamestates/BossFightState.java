@@ -22,9 +22,9 @@ public class BossFightState extends GameState {
     private DeweyBossFight player;
     private Boss boss;
     private Level level;
-    private double BPMS;
+    private double msPerBeat;
 
-    private double startTime;
+    private double time;
 
     public BossFightState(GameStateManager gsm){
         super(gsm);
@@ -41,12 +41,11 @@ public class BossFightState extends GameState {
         player = new DeweyBossFight();
         player.setPosition(64, 32);
 
-        BPMS = level.getBPMS();
-        startTime = System.currentTimeMillis();
+        msPerBeat = level.getLevelMSpB();
+        time = level.getBossStartTime();
 
         if (level.getDifficulty() == 1) {
             boss = new DudeLove();
-            startTime = startTime + 631.45;
         }
 
         else if (level.getDifficulty() == 2) {
@@ -68,9 +67,10 @@ public class BossFightState extends GameState {
 
 
     public void update(float deltatime){
-        //CHANGE THIS
+
+        time += (deltatime*1000);
+
         camera.update();
-        //handleInput();
         player.checkActions(deltatime);
         boss.doActions(deltatime);
 
@@ -92,11 +92,9 @@ public class BossFightState extends GameState {
 
         handleInput();
     }
-    public void draw(){
-        //tiledMapRenderer.setView(camera);
-        //tiledMapRenderer.render();
-        mapManager.render(camera,hudCamera);
 
+    public void draw(){
+        mapManager.render(camera,hudCamera);
 
         //Render Player and Boss
         batch.setProjectionMatrix(camera.combined);
@@ -113,29 +111,20 @@ public class BossFightState extends GameState {
     }
     public void handleInput(){
 
-        //if(level.getDifficulty() == 2 || level.getDifficulty() == 3) {
             if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
-                //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.moveRight();
-                //}
             }
             if ((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))) {
-                //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.moveLeft();
-                //}
             }
             if ((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
-                //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.jump();
-                //}
             }
             if ((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))) {
-                //if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (100 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
                     player.duck();
-                //}
             }
             if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - startTime) % BPMS)) && (250 >= ((System.currentTimeMillis() - startTime) % BPMS))) || (((BPMS - 250) <= ((System.currentTimeMillis() - startTime) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - startTime) % BPMS)))) {
+                if ((0 <= (time % msPerBeat) && (120 >= (time % msPerBeat))) || (((msPerBeat - 120) <= (time % msPerBeat)) && (msPerBeat >= (time % msPerBeat)))) {
                     player.attack(boss);
                 }
                 else
@@ -143,37 +132,7 @@ public class BossFightState extends GameState {
                     player.gotHit();
                 }
             }
-        //}
-        /*else {
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))) {
-                //if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (100 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
-                    player.moveRight();
-                //}
-            }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.A)) || (Gdx.input.isKeyJustPressed(Input.Keys.LEFT))) {
-                //if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (100 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
-                    player.moveLeft();
-                //}
-            }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))) {
-                //if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (100 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
-                    player.jump();
-                //}
-            }
-            if ((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))) {
-                //if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (100 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 100) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
-                    player.duck();
-                //}
-            }
-            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-                if (((0 <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (200 >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS))) || (((BPMS - 200) <= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)) && (BPMS >= ((System.currentTimeMillis() - (startTime + 631.45)) % BPMS)))) {
-                    player.attack(boss);
-                }
-                else{
-                    player.gotHit();
-                }
-            }
-        }*/
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             music.pause();
             gsm.pause();
@@ -187,7 +146,6 @@ public class BossFightState extends GameState {
         mapManager.dispose();
         music.dispose();
         gameHUD.dispose();
-        //tiledMap.dispose();
     }
 }
 

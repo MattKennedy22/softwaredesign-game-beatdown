@@ -17,26 +17,27 @@ public class PauseState extends GameState {
     private PauseSelBar select;
     private Pause pause;
 
-
-    int y = 77; //for select bar movements Value TBD
+    private int positionY;
 
    public PauseState(GameStateManager gsm){
        super(gsm);
-    }
+   }
 
-    public void init(){
-
+   public void init(){
+        positionY = 77;
         pause = new Pause();
         pause.setPosition(0,0);
 
         select = new PauseSelBar();
         select.setPosition(68,77);
 
-    }
-    public void update(float deltatime){
+   }
+
+   public void update(float deltatime){
         handleInput();
-    }
-    public void draw(){
+   }
+
+   public void draw(){
 
         batch.setProjectionMatrix(hudCamera.combined);
 
@@ -45,45 +46,39 @@ public class PauseState extends GameState {
         select.draw(batch);
         batch.end();
 
-    }
-    public void handleInput(){
-        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
-            if(y == 77){
-                select.setPosition(68,y);
-            }
-            else {
-                y=y+33;
-                select.setPosition(68,y);
-            }
+   }
 
+   public void handleInput(){
+        if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
+            if(positionY != 77){
+                positionY = positionY + 33;
+            }
+            select.setPosition(68,positionY);
         }
         if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
-            if(y == 11){
-                select.setPosition(68,y);
+            if(positionY != 11){
+                positionY = positionY - 33;
             }
-            else {
-                y = y - 33;
-                select.setPosition(68,y);
-            }
+            select.setPosition(68,positionY);
         }
-        // JUST TEST TO SWITCH STATES
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
-            if(y == 77)
+            if(positionY == 77)
             {
                 gsm.unpause();
             }
-            else if (y == 44)
+            else if (positionY == 44)
             {
                 gsm.setGameState(GameStateManager.SIDESCROLL);
             }
-            else if (y==11)
+            else if (positionY==11)
             {
-                gsm.setGameState(GameStateManager.MENU); //good
+                gsm.setGameState(GameStateManager.MENU);
             }
         }
-    }
-    public void dispose(){
+   }
+
+   public void dispose(){
         pause.dispose();
         select.dispose();
-    }
+   }
 }

@@ -29,9 +29,11 @@ public class LevelSelectState extends GameState {
         camera.update();
 
     }
+
     public void update(float deltatime){
         handleInput();
     }
+
     public void draw(){
         batch.setProjectionMatrix(camera.combined);
 
@@ -39,10 +41,8 @@ public class LevelSelectState extends GameState {
         background.draw(batch);
         select.draw(batch);
         batch.end();
-
-
-
     }
+
     public void handleInput(){
         if((Gdx.input.isKeyJustPressed(Input.Keys.D)) || (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT))){
             if(x > 170){
@@ -68,23 +68,17 @@ public class LevelSelectState extends GameState {
             gsm.setGameState(GameStateManager.MENU);
         }
 
-        // JUST TEST TO SWITCH STATES
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             if(x == 24)
             {
-                //gsm.setGameState(GameStateManager.BOSSFIGHT); //starts level select but if we select 2 for this then we can jump
-                // right into side scroller for first iteration demo
-
                 gsm.setLevel(1);
-                gsm.setGameState(GameStateManager.SIDESCROLL); //!!!!!!
+                gsm.setGameState(GameStateManager.SIDESCROLL);
             }
             else if (x == 110)
             {
                 //City Stage
                 gsm.setLevel(2);
                 gsm.setGameState(GameStateManager.SIDESCROLL);
-                //medium play
-
             }
             else if (x==196)
             {
@@ -94,10 +88,10 @@ public class LevelSelectState extends GameState {
             }
         }
     }
+
     public void dispose(){
         background.dispose();
         select.dispose();
     }
-
 
 }

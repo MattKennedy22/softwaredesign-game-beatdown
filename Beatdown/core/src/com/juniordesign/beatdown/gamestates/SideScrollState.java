@@ -50,7 +50,7 @@ public class SideScrollState extends GameState {
     }
 
     public void update(float deltatime){
-        //CHANGE THIS (NOT GOOD)
+
         player.run(deltatime);
         // Move camera with player if player position is not past end of level
         if(player.getPositionX() < cameraEndOfLevel) {
@@ -72,6 +72,7 @@ public class SideScrollState extends GameState {
 
 
     }
+
     public void draw(){
 
         mapManager.render(camera,hudCamera);
@@ -89,28 +90,19 @@ public class SideScrollState extends GameState {
         player.draw(batch);
         batch.end();
     }
+
     public void handleInput(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-
-            //if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
-            //{
-                player.attack(enemies);
-            //}
+            player.attack(enemies);
         }
         if((Gdx.input.isKeyJustPressed(Input.Keys.W)) || (Gdx.input.isKeyJustPressed(Input.Keys.UP))){
-            //if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
-            //{
-                if(player.getAnimationTime() == 0) {
-                    player.jump();
-                }
-            //}
+            if(player.getAnimationTime() == 0) {
+                player.jump();
+            }
         }
         if((Gdx.input.isKeyJustPressed(Input.Keys.S)) || (Gdx.input.isKeyJustPressed(Input.Keys.DOWN))){
-            //if(((0 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (150 >= ((System.currentTimeMillis() - startTime)%731.7))) || ((581.7 <= ((System.currentTimeMillis() - startTime) % 731.7)) && (731.7 >= ((System.currentTimeMillis() - startTime)%731.7))))
-            //{
-                player.duck();
-            //}
+            player.duck();
         }
 
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
@@ -123,6 +115,7 @@ public class SideScrollState extends GameState {
             gsm.setGameState(GameStateManager.BOSSFIGHT);
         }
     }
+
     public void dispose(){
         player.dispose();
         mapManager.dispose();

@@ -8,12 +8,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public class SelectBar {
-    Rectangle bottom, left, right, top;
 
     private Sprite selectBarSprite;
     private Texture selectBar;
-
-
 
     // Constructor
     public SelectBar() {

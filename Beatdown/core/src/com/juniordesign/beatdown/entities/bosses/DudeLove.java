@@ -86,7 +86,6 @@ public class DudeLove extends Boss {
 
     public void firstAttack(float deltatime){
         if(animationTime == 0) {
-            //check if these coordinates are right
             TextureRegion letterP = new TextureRegion(projectilesTexture, 0, 0, 16, 16);
             TextureRegion letterE = new TextureRegion(projectilesTexture, 16, 0, 16, 16);
             TextureRegion letterA = new TextureRegion(projectilesTexture, 32, 0, 16, 16);
@@ -123,7 +122,7 @@ public class DudeLove extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED //from 190,210
+                projectile.translateX(-(deltatime*300));
             }
         }
     }
@@ -166,7 +165,7 @@ public class DudeLove extends Boss {
         }
         else {
             for(Projectile projectile : projectiles){
-                projectile.translateX(-(deltatime*300)); // MAKE THIS THE SAME AS RUNSPEED
+                projectile.translateX(-(deltatime*300));
             }
         }
     }

@@ -22,35 +22,18 @@ public class SideScrollCollisions implements CollisionManager{
     }
 
     public void checkCollisions(float deltatime, ArrayList<Enemy> enemies){
-        //MapObjects objects = collisions.getObjects();
-        //boolean isColliding = false;
+
         for(RectangleMapObject rectangleObject : collisions.getByType(RectangleMapObject.class)){
             Rectangle rectangle = rectangleObject.getRectangle();
 
             if(rectangle.overlaps(player.getNormalHitbox())){
-                //COLLISION
-                //isColliding = true;
-                //if(timeSinceCollision == 0f) {
-                    player.gotHit();
-                //}
-                //else{
-                    //MAYBE CANCEL THE COLLISION
-                //}
-                //timeSinceCollision += deltatime;
+                player.gotHit();
             }
         }
         for(Enemy enemy : enemies){
             if(enemy.getSprite().getBoundingRectangle().overlaps(player.getNormalHitbox())){
-                //isColliding = true;
-                //if(timeSinceCollision == 0f){
-                    player.gotHit();
-                //}
-                //timeSinceCollision += deltatime;
+                player.gotHit();
             }
         }
-
-        //if(!isColliding){
-            //timeSinceCollision = 0;
-        //}
     }
 }
