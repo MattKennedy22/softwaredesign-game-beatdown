@@ -18,6 +18,7 @@ public class LevelOne extends Level {
         this.levelEnemies = new ArrayList<>();
         this.endOfLevel = 16000;
         this.runSpeed = 175.73799999f;
+        this.startPosition = 64;
         levelEnemies.add("MusicalUndertaker.png");
         levelEnemies.add("PriestTrumpet.png");
     }

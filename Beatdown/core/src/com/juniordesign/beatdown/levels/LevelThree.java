@@ -17,6 +17,7 @@ public class LevelThree extends Level {
         this.bossMusic = "DevilMusic.mp3";
         this.runSpeed = 266.580166f;
         this.endOfLevel = 58500;
+        this.startPosition = 70;
         this.levelEnemies = new ArrayList<>();
         levelEnemies.add("skeleboy.png");
     }

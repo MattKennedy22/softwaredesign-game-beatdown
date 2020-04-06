@@ -10,6 +10,7 @@ public abstract class Level {
     protected String bossMusic;
     protected float runSpeed;
     protected int endOfLevel;
+    protected int startPosition;
     protected ArrayList<String> levelEnemies;
 
     protected int difficulty;
@@ -25,6 +26,10 @@ public abstract class Level {
 
     public double getBossStartTime() {
         return bossStartTime;
+    }
+
+    public int getStartPosition() {
+        return startPosition;
     }
 
     public double getLevelMSpB(){

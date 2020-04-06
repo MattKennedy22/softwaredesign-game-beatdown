@@ -42,7 +42,7 @@ public class SideScrollState extends GameState {
         }
         gameHUD = new Hud(player);
         player.setRunSpeed(level.getRunSpeed());
-        player.setPosition(64,32);
+        player.setPosition(level.getStartPosition(),32);
         enemies = new ArrayList<Enemy>();
         mapManager = new SideScrollMap(level.getLevelMap());
         mapManager.spawnEnemies(enemies, level.getLevelEnemies());

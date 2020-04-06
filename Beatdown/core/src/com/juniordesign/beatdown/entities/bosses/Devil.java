@@ -21,7 +21,7 @@ public class Devil extends Boss {
 
     @Override
     protected void init(){
-        projectilesTexture = new Texture("devilProjectiles.png");
+        projectilesTexture = new Texture("DevilProjectiles.png");
         lavaWall = new TextureRegion(projectilesTexture,0,0,32,32);
         fireBall = new TextureRegion(projectilesTexture,32,0,32,32);
 
